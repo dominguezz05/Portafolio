@@ -30,7 +30,7 @@ function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
       >
-        Desarrollador Web | Creativo | Apasionado por la tecnología
+        Desarrollador Web | Creativo | Apasionado por la tecnología 
       </motion.p>
 
       {/* Botones con hover y animación */}
