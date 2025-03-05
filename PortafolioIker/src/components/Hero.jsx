@@ -14,14 +14,20 @@ function Hero() {
       />
       
       {/* Nombre con animación */}
-      <motion.h1
-        className="text-5xl font-bold"
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
       >
-        Tu Nombre Aquí
-      </motion.h1>
+        {/* Aquí dentro el h1 puede tener el hover */}
+        <motion.h1
+          className="text-5xl font-bold cursor-pointer"
+          whileHover={{ scale: 1.1, rotate: 3 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Tu Nombre Aquí
+        </motion.h1>
+      </motion.div>
 
       {/* Descripción con animación */}
       <motion.p

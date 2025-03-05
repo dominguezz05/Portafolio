@@ -38,6 +38,15 @@ function Skills() {
               </span>
             ))}
           </div>
+          <h3 className="text-2xl font-bold text-blue-400 mt-8">🚀 Aprendiendo Ahora</h3>
+<div className="flex justify-center flex-wrap gap-4 mt-4">
+  {['Docker', 'Next.js', 'Prisma', 'NestJS'].map((tech) => (
+    <span key={tech} className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full shadow-lg">
+      {tech}
+    </span>
+  ))}
+</div>
+
         </div>
       </Reveal>
     </section>

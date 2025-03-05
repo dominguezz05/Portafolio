@@ -33,6 +33,18 @@ function AboutMe() {
             ponerte en <a href="#contact" className="text-blue-400 underline hover:text-blue-300">contacto</a>.
           </p>
         </div>
+        <h3 className="text-2xl font-bold text-center text-blue-400">📅 Mi Trayectoria</h3>
+<div className="border-l-4 border-blue-400 pl-4 space-y-4">
+  <div>
+    <p className="font-semibold text-gray-300">Ciclo DAW</p>
+    <p className="text-gray-400">2023 - 2025 | Centro de Estudios XYZ</p>
+  </div>
+  <div>
+    <p className="font-semibold text-gray-300">Proyecto Final: ThreeLogics</p>
+    <p className="text-gray-400">Gestor de almacenes con React y Supabase</p>
+  </div>
+</div>
+
       </Reveal>
     </section>
   );
