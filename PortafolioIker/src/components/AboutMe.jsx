@@ -26,7 +26,7 @@ function AboutMe({ isDarkMode }) {
             <span className={`font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}> HTML, CSS, JavaScript, PHP, MySQL</span>,
             y recientemente me he sumergido en el ecosistema moderno con herramientas como
             <span className={`font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}> React, Node.js, TailwindCSS</span> y bases de datos NoSQL como
-            <span className={`font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}> MongoDB y Supabase</span>.
+            <span className={`font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}> MongoDB y Supabase (PostgreSQL avanzado)</span>.
           </p>
 
           <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>

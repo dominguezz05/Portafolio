@@ -5,13 +5,13 @@ const projects = [
   {
     title: 'ThreeLogics',
     description: 'Sistema de gestión de almacenes optimizado para pequeñas y medianas empresas.',
-    technologies: ['React', 'Node.js', 'Supabase', 'Tailwind'],
+    technologies: ['React', 'Node.js + Express', 'Supabase', 'Tailwind'],
     link: 'https://github.com/IkerDominguez2005/ThreeLogics',
   },
   {
     title: 'Portfolio Personal',
     description: 'Portfolio interactivo para mostrar mis proyectos y habilidades.',
-    technologies: ['React', 'Tailwind', 'Framer Motion'],
+    technologies: ['React', 'Tailwind', 'Framer Motion', 'Vite'],
     link: 'https://github.com/IkerDominguez2005/Portfolio',
   },
   {
