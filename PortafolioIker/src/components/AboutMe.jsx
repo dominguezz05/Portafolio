@@ -8,13 +8,13 @@ function AboutMe({ isDarkMode }) {
         isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'
       }`}
     >
-      <Reveal>
+     
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Título */}
           <h2 className={`text-4xl font-extrabold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
             Sobre mí
           </h2>
-
+          <Reveal>
           {/* Párrafos */}
           <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             ¡Hola! Soy un apasionado desarrollador web en formación, actualmente cursando el ciclo de
@@ -57,8 +57,9 @@ function AboutMe({ isDarkMode }) {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
-      </Reveal>
+      
     </section>
   );
 }

@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 function Hero({ isDarkMode }) {
   return (
     <section
-      className={`h-screen flex flex-col justify-center items-center text-center p-8 relative overflow-hidden transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
-      }`}
-      style={{ marginTop: '-70px' }}
-    >
+  className={`h-[80vh] flex flex-col justify-center items-center text-center p-8 relative overflow-hidden transition-colors duration-300 ${
+    isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
+  }`}
+ 
+>
+
       {/* Contenedor con foto + "Disponible para trabajar" alineados horizontalmente */}
       <motion.div
         className="flex items-center gap-4"

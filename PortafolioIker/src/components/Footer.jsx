@@ -16,7 +16,7 @@ function Footer({ isDarkMode }) {
           <a href="#about" className="hover:text-blue-400 transition">Sobre mí</a>
           <a href="#projects" className="hover:text-blue-400 transition">Proyectos</a>
           <a href="#skills" className="hover:text-blue-400 transition">Skills</a>
-          <a href="#contact" className="hover:text-blue-400 transition">Contacto</a>
+
         </nav>
 
         <div className="flex justify-center gap-6 mt-4">

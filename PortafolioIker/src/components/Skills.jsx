@@ -2,8 +2,10 @@ import Reveal from './Reveal';
 import {
   SiHtml5, SiCss3, SiReact, SiBootstrap, SiGreensock, SiPhp, SiJavascript, SiTailwindcss,
   SiMysql, SiMongodb, SiSupabase, SiPython, SiGit, SiNodedotjs, SiXampp,
-  SiGithub, SiVercel, SiPostman, SiDocker, SiNextdotjs, SiPrisma, SiNestjs
+  SiGithub, SiVercel, SiPostman, SiDocker, SiAngular, SiAstro, SiJquery
 } from 'react-icons/si';
+
+import { FaCode, FaServer } from 'react-icons/fa'; 
 
 const techs = [
   { name: 'HTML5', icon: SiHtml5, color: 'text-orange-500' },
@@ -23,20 +25,23 @@ const databases = [
 ];
 
 const tools = [
-  { name: 'Python', icon: SiPython, color: 'text-yellow-400' },
+  
   { name: 'Git', icon: SiGit, color: 'text-red-500' },
   { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-400' },
   { name: 'XAMPP', icon: SiXampp, color: 'text-orange-500' },
   { name: 'GitHub', icon: SiGithub, color: 'text-gray-500' },
   { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
   { name: 'Postman', icon: SiPostman, color: 'text-orange-600' },
+  { name: 'JQuery', icon: SiJquery, color: 'text-orange-600' },
+  { name: 'Ajax', icon: FaCode, color: 'text-purple-400' },       
+  { name: 'ApiRest', icon: FaServer, color: 'text-green-500' }  
 ];
 
 const learning = [
   { name: 'Docker', icon: SiDocker, color: 'text-blue-400' },
-  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-  { name: 'Prisma', icon: SiPrisma, color: 'text-indigo-500' },
-  { name: 'NestJS', icon: SiNestjs, color: 'text-red-500' },
+  { name: 'Angular', icon: SiAngular, color: 'text-black dark:text-white' },
+  { name: 'Astro', icon: SiAstro, color: 'text-red-500' },
+  { name: 'Python', icon: SiPython, color: 'text-yellow-400' }
 ];
 
 function Skills({ isDarkMode }) {
