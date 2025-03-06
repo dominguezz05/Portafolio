@@ -62,37 +62,38 @@ function PersonalInfo({ isDarkMode }) {
               isDarkMode={isDarkMode}
             />
 
-            <InfoItem
-              icon={<Linkedin className="w-6 h-6" />}
-              label="LinkedIn"
-              value={
-                <a
-                  href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`hover:underline ${
-                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                  }`}
-                >
-                  linkedin.com/in/iker-domínguez-calcerrada-423736298
-                </a>
-              }
-              isDarkMode={isDarkMode}
-            />
+<InfoItem
+  icon={<Linkedin className="w-6 h-6" />}
+  label="LinkedIn"
+  value={
+    <a
+      href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`hover:underline  ${
+        isDarkMode ? 'text-blue-400' : 'text-blue-600'
+      }`}
+    >
+     Visita mi perfil de LinkedIn
+    </a>
+  }
+  isDarkMode={isDarkMode}
+/>
+
 
             <InfoItem
               icon={<Github className="w-6 h-6" />}
               label="GitHub"
               value={
                 <a
-                  href="https://github.com/IkerDominguez2005"
+                  href="https://github.com/dominguezz05"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`hover:underline ${
                     isDarkMode ? 'text-blue-400' : 'text-blue-600'
                   }`}
                 >
-                  github.com/IkerDominguez2005
+                  dominguezz05
                 </a>
               }
               isDarkMode={isDarkMode}

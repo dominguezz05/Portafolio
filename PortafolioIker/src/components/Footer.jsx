@@ -27,7 +27,7 @@ function Footer({ isDarkMode }) {
         {/* Iconos sociales */}
         <div className="flex justify-center gap-6 mt-4">
           <a
-            href="https://github.com/IkerDominguez2005"
+            href="https://github.com/dominguezz05"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition"
@@ -35,7 +35,7 @@ function Footer({ isDarkMode }) {
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="https://linkedin.com/in/iker-domínguez-calcerrada-423736298"
+            href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition"

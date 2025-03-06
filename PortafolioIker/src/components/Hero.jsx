@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import ImagenPerfil from "../assets/Perfil.jpg";
 
 function Hero({ isDarkMode }) {
   return (
@@ -16,7 +17,7 @@ function Hero({ isDarkMode }) {
       >
         {/* Foto */}
         <img
-          src="/tu-foto.jpg"
+          src={ImagenPerfil}
           alt="Foto de perfil"
           className="w-32 h-32 rounded-full border-4 border-blue-500 shadow-lg"
         />

@@ -49,11 +49,11 @@ function AboutMe({ isDarkMode }) {
             <div className={`border-l-4 pl-4 space-y-4 ${isDarkMode ? 'border-blue-400' : 'border-blue-600'}`}>
               <div>
                 <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Ciclo DAW</p>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>2023 - 2025 | Centro de Estudios XYZ</p>
+                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>2023 - 2025 | Centro de Formación Profesional Medac (Fuenlabrada)</p>
               </div>
               <div>
-                <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Proyecto Final: ThreeLogics</p>
-                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Gestor de almacenes con React y Supabase</p>
+                <p className={`font-semibold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Proyecto Final Grado: ThreeLogics</p>
+                <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Gestor de almacenes con React, vite, Tailwind y Supabase</p>
               </div>
             </div>
           </div>
