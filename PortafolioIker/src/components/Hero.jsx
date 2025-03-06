@@ -3,9 +3,7 @@ import { motion } from 'framer-motion';
 function Hero({ isDarkMode }) {
   return (
     <section
-  className={`h-[80vh] flex flex-col justify-center items-center text-center p-8 relative overflow-hidden transition-colors duration-300 ${
-    isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
-  }`}
+  className={`h-[80vh] flex flex-col justify-center items-center text-center p-8 relative overflow-hidden transition-colors duration-300 `}
  
 >
 

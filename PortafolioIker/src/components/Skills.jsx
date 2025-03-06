@@ -55,7 +55,7 @@ function Skills({ isDarkMode }) {
 
   return (
     <section id="skills" className={`py-16 px-8 transition-colors duration-300 
-      ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+      `}>
       <Reveal>
         <div className="text-center mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold mb-6 text-blue-400">Tecnologías y Skills</h2>
@@ -79,7 +79,7 @@ function Skills({ isDarkMode }) {
           </div>
 
           {/* Actualmente aprendiendo */}
-          <h3 className="text-2xl font-semibold mb-4 text-blue-400">🚀 Aprendiendo Ahora</h3>
+         < h3 className="text-2xl font-semibold mb-4">🚀 Aprendiendo Ahora</h3>
           <div className="flex justify-center flex-wrap gap-3">
             {learning.map(renderSkill)}
           </div>

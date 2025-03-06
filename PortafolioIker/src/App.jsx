@@ -24,21 +24,24 @@ function App() {
     }
 };
 
-  return (
-    <div className={`${isDarkMode ? 'dark' : ''}`}>
+return (
+  <div className={`${isDarkMode ? 'dark' : ''}`}>
     <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-    <main className="font-sans bg-gray-900 text-white scroll-smooth">
-    <Hero isDarkMode={isDarkMode} />
+    
+    <main className={`font-sans scroll-smooth transition-colors duration-500 ${
+      isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
+    }`}>
+      <Hero isDarkMode={isDarkMode} />
       <AboutMe isDarkMode={isDarkMode} />
       <PersonalInfo isDarkMode={isDarkMode} />
       <Projects isDarkMode={isDarkMode} />
       <Skills isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
       <ScrollToTop isDarkMode={isDarkMode} />
+    </main>
+  </div>
+);
 
-      </main>
-    </div>
-  );
 }
 
 export default App;
