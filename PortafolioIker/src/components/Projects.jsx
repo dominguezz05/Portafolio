@@ -1,30 +1,23 @@
 import Reveal from './Reveal';
 import { Github, ExternalLink } from 'lucide-react';
+import imagen from '../assets/imaegn.png';
 
 const projects = [
-  {
+  /*{
     title: 'ThreeLogics',
     description: 'Sistema de gestión de almacenes optimizado para pequeñas y medianas empresas.',
     technologies: ['React', 'Node.js + Express', 'Supabase', 'Tailwind'],
     link: 'https://github.com/IkerDominguez2005/ThreeLogics',
     preview: 'https://your-preview-link.com/ThreeLogics', // Añade un link de preview si lo tienes
     image: '/images/threelogics.png' // Si tienes una captura del proyecto
-  },
-  {
-    title: 'Portfolio Personal',
-    description: 'Portfolio interactivo para mostrar mis proyectos y habilidades.',
-    technologies: ['React', 'Tailwind', 'Framer Motion', 'Vite'],
-    link: 'https://github.com/IkerDominguez2005/Portfolio',
-    preview: 'https://your-preview-link.com/Portfolio',
-    image: '/images/portfolio.png'
-  },
+  },*/
   {
     title: 'Monkey´s Paradise',
     description: 'Videojuego arcade 2D donde controlas un mono que esquiva meteoritos y derrota jefes finales.',
     technologies: ['HTML', 'JavaScript', 'Canvas', 'CSS3'],
-    link: 'https://github.com/IkerDominguez2005/BananaMadness',
-    preview: 'https://your-preview-link.com/MonkeyParadise',
-    image: '/images/monkey.png'
+    link: 'https://github.com/dominguezz05/Monkeys-Paradise',
+    preview: 'https://monkeys-paradise.vercel.app/',
+    image: imagen,  
   },
 ];
 
