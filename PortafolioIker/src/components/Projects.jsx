@@ -16,7 +16,7 @@ const projects = [
     description: 'Videojuego arcade 2D donde controlas un mono que esquiva meteoritos y derrota jefes finales.',
     technologies: ['HTML', 'JavaScript', 'Canvas', 'CSS3'],
     link: 'https://github.com/dominguezz05/Monkeys-Paradise',
-    preview: 'https://monkeys-paradise.vercel.app/',
+    preview: 'https://simiosoft.itch.io/monkeys-paradise-simiosoft',
     image: imagen,  
   },
 ];
@@ -94,7 +94,7 @@ function Projects({ isDarkMode }) {
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Preview
+                      Jugar en Itch.io
                     </a>
                   </div>
                 </div>
