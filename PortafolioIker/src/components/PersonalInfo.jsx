@@ -35,7 +35,7 @@ function PersonalInfo({ isDarkMode }) {
             <InfoItem
               icon={<Calendar className="w-6 h-6" />}
               label="Edad"
-              value="19 años"
+              value="20 años"
               isDarkMode={isDarkMode}
             />
 
