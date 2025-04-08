@@ -2,6 +2,7 @@ import Reveal from './Reveal';
 import { Github, ExternalLink } from 'lucide-react';
 import imagen from '../assets/imaegn.png';
 import threeLogicsImage from '../assets/qr.png'; // Imagen del QR
+import AnimatedText from "./AnimatedText";
 
 const projects = [
   {
@@ -34,10 +35,13 @@ function Projects({ isDarkMode, language }) {
     >
       <Reveal>
         <div className="max-w-6xl mx-auto">
+        
           <h2 className={`text-4xl font-bold text-center mb-10 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+          <AnimatedText keyProp={language}>
             💼 {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
+            </AnimatedText>
           </h2>
-
+         
           <div className="space-y-12">
             {projects.map((project, index) => (
               <div
@@ -64,11 +68,14 @@ function Projects({ isDarkMode, language }) {
                 <div className="flex-1 p-8 md:p-10 flex flex-col justify-between">
                   <div>
                     <h3 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+                      
                       {project.title}
                     </h3>
 
                     <p className="mb-4 text-sm leading-relaxed">
+                    <AnimatedText keyProp={language}>
                       {language === 'es' ? project.description_es : project.description_en}
+                      </AnimatedText>
                     </p>
 
                     {/* Tecnologías */}
@@ -105,9 +112,11 @@ function Projects({ isDarkMode, language }) {
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition"
                     >
                       <ExternalLink className="w-4 h-4" />
+                      <AnimatedText keyProp={language}>
                       {project.title === "Monkey's Paradise"
                         ? language === 'es' ? 'Jugar en Itch.io' : 'Play on Itch.io'
                         : language === 'es' ? 'Ver Demo' : 'View Demo'}
+                        </AnimatedText>
                     </a>
                   </div>
                 </div>

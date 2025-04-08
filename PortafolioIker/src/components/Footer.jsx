@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-
+import AnimatedText from "./AnimatedText";
 function Footer({ isDarkMode, language }) {
   return (
     <footer
@@ -13,22 +13,32 @@ function Footer({ isDarkMode, language }) {
 
         {/* Título */}
         <p className={`text-lg font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+        <AnimatedText keyProp={language}>
           © 2025 Iker Domínguez - {language === 'es' ? 'Desarrollador Fullstack' : 'Fullstack Developer'}
+          </AnimatedText>
         </p>
 
         {/* Navegación */}
         <nav className="flex justify-center gap-6 text-sm">
           <a href="#hero" className="hover:text-blue-400 transition">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? 'Inicio' : 'Home'}
+            </AnimatedText>
           </a>
           <a href="#about" className="hover:text-blue-400 transition">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? 'Sobre mí' : 'About'}
+            </AnimatedText>
           </a>
           <a href="#projects" className="hover:text-blue-400 transition">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? 'Proyectos' : 'Projects'}
+            </AnimatedText>
           </a>
           <a href="#skills" className="hover:text-blue-400 transition">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? 'Skills' : 'Skills'}
+            </AnimatedText>
           </a>
         </nav>
 
@@ -62,9 +72,11 @@ function Footer({ isDarkMode, language }) {
         <p className={`text-sm italic mt-2 ${
           isDarkMode ? 'text-gray-500' : 'text-gray-400'
         }`}>
+           <AnimatedText keyProp={language}>
           {language === 'es'
             ? '"Siempre aprendiendo, siempre creando."'
             : '"Always learning, always creating."'}
+            </AnimatedText>
         </p>
       </div>
     </footer>

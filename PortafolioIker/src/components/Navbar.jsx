@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { FaGlobe } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import AnimatedText from "./AnimatedText";
 
 
 function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
@@ -55,16 +55,24 @@ function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
       {/* Links centrados */}
       <div className="flex-1 flex justify-center gap-6">
         <a href="#about" className={linkClass('about')}>
+        <AnimatedText keyProp={language}>
           {language === 'es' ? 'Sobre mí' : 'About Me'}
+          </AnimatedText>
         </a>
         <a href="#personalinfo" className={linkClass('personalinfo')}>
+        <AnimatedText keyProp={language}>
           {language === 'es' ? 'Información Personal' : 'Personal Info'}
+          </AnimatedText>
         </a>
         <a href="#projects" className={linkClass('projects')}>
+        <AnimatedText keyProp={language}>
           {language === 'es' ? 'Proyectos' : 'Projects'}
+          </AnimatedText>
         </a>
         <a href="#skills" className={linkClass('skills')}>
+        <AnimatedText keyProp={language}>
           {language === 'es' ? 'Skills' : 'Skills'}
+          </AnimatedText>
         </a>
       </div>
 

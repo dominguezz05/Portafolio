@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import ImagenPerfil from "../assets/Perfil.jpg";
+import AnimatedText from './AnimatedText';
 
 function Hero({ isDarkMode, language }) {
   return (
@@ -22,6 +23,7 @@ function Hero({ isDarkMode, language }) {
         />
 
         {/* Disponible para trabajar */}
+        <AnimatedText keyProp={language}>
         <a
           href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
           target="_blank"
@@ -35,9 +37,11 @@ function Hero({ isDarkMode, language }) {
             {language === 'es' ? 'Disponible para trabajar' : 'Available for work'}
           </span>
         </a>
+        </AnimatedText>
       </motion.div>
 
       {/* Nombre */}
+     
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -51,8 +55,10 @@ function Hero({ isDarkMode, language }) {
           Iker Domínguez
         </motion.h1>
       </motion.div>
+    
 
       {/* Descripción */}
+      <AnimatedText keyProp={language}>
       <motion.p
         className="mt-4 text-lg"
         initial={{ opacity: 0 }}
@@ -63,6 +69,7 @@ function Hero({ isDarkMode, language }) {
           ? 'Desarrollador Web | Creativo | Apasionado por la tecnología'
           : 'Web Developer | Creative | Passionate about technology'}
       </motion.p>
+      </AnimatedText>
 
       {/* Botones */}
       <motion.div
@@ -71,18 +78,22 @@ function Hero({ isDarkMode, language }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
       >
+          <AnimatedText keyProp={language}>
         <a
           href="#projects"
           className="px-6 py-2 bg-blue-600 rounded-lg transition transform hover:scale-105 hover:bg-blue-500"
         >
           {language === 'es' ? 'Ver Proyectos' : 'View Projects'}
         </a>
+        </AnimatedText>
+        <AnimatedText keyProp={language}>
         <a
           href="mailto:ikerdc2005@gmail.com?subject=Me%20interesa%20tu%20perfil&body=Hola%20Iker,%20he%20visto%20tu%20portfolio%20y%20me%20gustaría%20hablar%20contigo."
           className="px-6 py-2 border border-white rounded-lg transition transform hover:scale-105 hover:bg-white hover:text-gray-900"
         >
           {language === 'es' ? 'Contáctame' : 'Contact Me'}
         </a>
+        </AnimatedText>
       </motion.div>
     </section>
   );

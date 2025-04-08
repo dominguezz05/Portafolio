@@ -6,7 +6,7 @@ import {
 } from 'react-icons/si';
 
 import { FaCode, FaServer } from 'react-icons/fa'; 
-
+import AnimatedText from "./AnimatedText";
 const techs = [
   { name: 'HTML5', icon: SiHtml5, color: 'text-orange-500' },
   { name: 'CSS3', icon: SiCss3, color: 'text-blue-500' },
@@ -57,12 +57,16 @@ function Skills({ isDarkMode, language }) {
       <Reveal>
         <div className="text-center mx-auto max-w-4xl">
           <h2 className="text-4xl font-bold mb-6 text-blue-400">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? 'Tecnologías y Skills' : 'Technologies and Skills'}
+            </AnimatedText>
           </h2>
 
           {/* Lenguajes y tecnologías web */}
           <h3 className="text-2xl font-semibold mb-4">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? '💻 Lenguajes de Programación' : '💻 Programming Languages'}
+            </AnimatedText>
           </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {techs.map(renderSkill)}
@@ -70,7 +74,9 @@ function Skills({ isDarkMode, language }) {
 
           {/* Bases de datos */}
           <h3 className="text-2xl font-semibold mb-4">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? '🗄️ Bases de Datos' : '🗄️ Databases'}
+            </AnimatedText>
           </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {databases.map(renderSkill)}
@@ -78,7 +84,9 @@ function Skills({ isDarkMode, language }) {
 
           {/* Otros lenguajes y herramientas */}
           <h3 className="text-2xl font-semibold mb-4">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? '⚙️ Otros Lenguajes y Herramientas' : '⚙️ Other Languages and Tools'}
+            </AnimatedText>
           </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {tools.map(renderSkill)}
@@ -86,7 +94,9 @@ function Skills({ isDarkMode, language }) {
 
           {/* Actualmente aprendiendo */}
           <h3 className="text-2xl font-semibold mb-4">
+          <AnimatedText keyProp={language}>
             {language === 'es' ? '🚀 Aprendiendo Ahora' : '🚀 Currently Learning'}
+            </AnimatedText>
           </h3>
           <div className="flex justify-center flex-wrap gap-3">
             {learning.map(renderSkill)}
