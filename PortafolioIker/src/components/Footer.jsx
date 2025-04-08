@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
 
-function Footer({ isDarkMode }) {
+function Footer({ isDarkMode, language }) {
   return (
     <footer
       className={`py-8 transition-colors duration-500 ${
@@ -13,15 +13,23 @@ function Footer({ isDarkMode }) {
 
         {/* Título */}
         <p className={`text-lg font-semibold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
-          © 2025 Iker Domínguez - Desarrollador Fullstack
+          © 2025 Iker Domínguez - {language === 'es' ? 'Desarrollador Fullstack' : 'Fullstack Developer'}
         </p>
 
         {/* Navegación */}
         <nav className="flex justify-center gap-6 text-sm">
-          <a href="#hero" className="hover:text-blue-400 transition">Inicio</a>
-          <a href="#about" className="hover:text-blue-400 transition">Sobre mí</a>
-          <a href="#projects" className="hover:text-blue-400 transition">Proyectos</a>
-          <a href="#skills" className="hover:text-blue-400 transition">Skills</a>
+          <a href="#hero" className="hover:text-blue-400 transition">
+            {language === 'es' ? 'Inicio' : 'Home'}
+          </a>
+          <a href="#about" className="hover:text-blue-400 transition">
+            {language === 'es' ? 'Sobre mí' : 'About'}
+          </a>
+          <a href="#projects" className="hover:text-blue-400 transition">
+            {language === 'es' ? 'Proyectos' : 'Projects'}
+          </a>
+          <a href="#skills" className="hover:text-blue-400 transition">
+            {language === 'es' ? 'Skills' : 'Skills'}
+          </a>
         </nav>
 
         {/* Iconos sociales */}
@@ -54,7 +62,9 @@ function Footer({ isDarkMode }) {
         <p className={`text-sm italic mt-2 ${
           isDarkMode ? 'text-gray-500' : 'text-gray-400'
         }`}>
-          "Siempre aprendiendo, siempre creando."
+          {language === 'es'
+            ? '"Siempre aprendiendo, siempre creando."'
+            : '"Always learning, always creating."'}
         </p>
       </div>
     </footer>

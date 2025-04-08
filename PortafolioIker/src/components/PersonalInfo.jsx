@@ -1,7 +1,7 @@
-import { Mail, MapPin, Calendar, User, Linkedin, Github, FileText } from 'lucide-react';
+import { Mail, MapPin, User, Linkedin, Github, FileText } from 'lucide-react';
 import Reveal from './Reveal';
 
-function PersonalInfo({ isDarkMode }) {
+function PersonalInfo({ isDarkMode, language }) {
   return (
     <section
       id="personalinfo"
@@ -15,40 +15,36 @@ function PersonalInfo({ isDarkMode }) {
         }`}
       >
         <Reveal>
+          {/* Título */}
           <div className="text-center mb-6 flex items-center justify-center gap-2">
             <FileText className={`w-7 h-7 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
-            <h3 className={`text-3xl font-bold ${
-              isDarkMode ? 'text-blue-400' : 'text-blue-600'
-            }`}>
-              Información Personal
+            <h3 className={`text-3xl font-bold ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
+              {language === 'es' ? 'Información Personal' : 'Personal Information'}
             </h3>
           </div>
 
           <div className="space-y-4">
             <InfoItem
               icon={<User className="w-6 h-6" />}
-              label="Nombre"
+              label={language === 'es' ? 'Nombre' : 'Name'}
               value="Iker Domínguez"
               isDarkMode={isDarkMode}
             />
 
-
             <InfoItem
               icon={<MapPin className="w-6 h-6" />}
-              label="Ubicación"
+              label={language === 'es' ? 'Ubicación' : 'Location'}
               value="Madrid, España"
               isDarkMode={isDarkMode}
             />
 
             <InfoItem
               icon={<Mail className="w-6 h-6" />}
-              label="Correo"
+              label="Email"
               value={
                 <a
                   href="mailto:ikerdc2005@gmail.com"
-                  className={`hover:underline ${
-                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                  }`}
+                  className={`hover:underline ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}
                 >
                   ikerdc2005@gmail.com
                 </a>
@@ -56,24 +52,21 @@ function PersonalInfo({ isDarkMode }) {
               isDarkMode={isDarkMode}
             />
 
-<InfoItem
-  icon={<Linkedin className="w-6 h-6" />}
-  label="LinkedIn"
-  value={
-    <a
-      href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`hover:underline  ${
-        isDarkMode ? 'text-blue-400' : 'text-blue-600'
-      }`}
-    >
-     Visita mi perfil de LinkedIn
-    </a>
-  }
-  isDarkMode={isDarkMode}
-/>
-
+            <InfoItem
+              icon={<Linkedin className="w-6 h-6" />}
+              label="LinkedIn"
+              value={
+                <a
+                  href="https://www.linkedin.com/in/iker-dom%C3%ADnguez-calcerrada-423736298/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`hover:underline ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}
+                >
+                  {language === 'es' ? 'Visita mi perfil de LinkedIn' : 'Visit my LinkedIn profile'}
+                </a>
+              }
+              isDarkMode={isDarkMode}
+            />
 
             <InfoItem
               icon={<Github className="w-6 h-6" />}
@@ -83,9 +76,7 @@ function PersonalInfo({ isDarkMode }) {
                   href="https://github.com/dominguezz05"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`hover:underline ${
-                    isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                  }`}
+                  className={`hover:underline ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}
                 >
                   dominguezz05
                 </a>

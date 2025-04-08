@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 
-function Navbar({ isDarkMode, toggleTheme }) {
+function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
   const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,38 +44,48 @@ function Navbar({ isDarkMode, toggleTheme }) {
         scrolled
           ? isDarkMode
             ? 'bg-gray-900/80 backdrop-blur-lg text-white'
-            : 'bg-gary-100/80 backdrop-blur-lg text-gray-900'
+            : 'bg-gray-100/80 backdrop-blur-lg text-gray-900'
           : 'bg-transparent text-white'
       }`}
     >
       {/* Links centrados */}
       <div className="flex-1 flex justify-center gap-6">
-      <a href="#about" className={linkClass('about')}>
-          Sobre mí
+        <a href="#about" className={linkClass('about')}>
+          {language === 'es' ? 'Sobre mí' : 'About Me'}
         </a>
         <a href="#personalinfo" className={linkClass('personalinfo')}>
-          Información Personal
+          {language === 'es' ? 'Información Personal' : 'Personal Info'}
         </a>
         <a href="#projects" className={linkClass('projects')}>
-          Proyectos
+          {language === 'es' ? 'Proyectos' : 'Projects'}
         </a>
         <a href="#skills" className={linkClass('skills')}>
-          Skills
+          {language === 'es' ? 'Skills' : 'Skills'}
         </a>
-     
       </div>
 
-      {/* Botón modo claro/oscuro */}
-      <button
-        onClick={toggleTheme}
-        className="p-2 rounded-full transition-transform hover:scale-110 focus:outline-none cursor-pointer"
-      >
-        {isDarkMode ? (
-          <Sun className="text-yellow-400 w-6 h-6" />
-        ) : (
-          <Moon className="text-gray-800 w-6 h-6" />
-        )}
-      </button>
+      {/* Botones de acciones */}
+      <div className="flex items-center gap-2">
+        {/* Botón modo claro/oscuro */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full transition-transform hover:scale-110 focus:outline-none cursor-pointer"
+        >
+          {isDarkMode ? (
+            <Sun className="text-yellow-400 w-6 h-6" />
+          ) : (
+            <Moon className="text-gray-800 w-6 h-6" />
+          )}
+        </button>
+
+        {/* Botón cambio de idioma */}
+        <button
+          onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+          className="p-2 rounded-full transition-transform hover:scale-110 focus:outline-none cursor-pointer text-sm"
+        >
+          {language === 'es' ? 'EN' : 'ES'}
+        </button>
+      </div>
     </nav>
   );
 }

@@ -25,7 +25,6 @@ const databases = [
 ];
 
 const tools = [
-  
   { name: 'Git', icon: SiGit, color: 'text-red-500' },
   { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-400' },
   { name: 'XAMPP', icon: SiXampp, color: 'text-orange-500' },
@@ -33,18 +32,18 @@ const tools = [
   { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
   { name: 'Postman', icon: SiPostman, color: 'text-orange-600' },
   { name: 'JQuery', icon: SiJquery, color: 'text-orange-600' },
-  { name: 'Ajax', icon: FaCode, color: 'text-purple-400' },       
-  { name: 'ApiRest', icon: FaServer, color: 'text-green-500' }  
+  { name: 'Ajax', icon: FaCode, color: 'text-purple-400' },
+  { name: 'ApiRest', icon: FaServer, color: 'text-green-500' },
 ];
 
 const learning = [
   { name: 'Docker', icon: SiDocker, color: 'text-blue-400' },
   { name: 'Angular', icon: SiAngular, color: 'text-black dark:text-white' },
   { name: 'Astro', icon: SiAstro, color: 'text-red-500' },
-  { name: 'Python', icon: SiPython, color: 'text-yellow-400' }
+  { name: 'Python', icon: SiPython, color: 'text-yellow-400' },
 ];
 
-function Skills({ isDarkMode }) {
+function Skills({ isDarkMode, language }) {
   const renderSkill = ({ name, icon: Icon, color }) => (
     <div key={name} className={`flex items-center gap-2 rounded-full px-4 py-2 shadow-lg
       ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
@@ -54,32 +53,41 @@ function Skills({ isDarkMode }) {
   );
 
   return (
-    <section id="skills" className={`py-16 px-8 transition-colors duration-300 
-      `}>
+    <section id="skills" className="py-16 px-8 transition-colors duration-300">
       <Reveal>
         <div className="text-center mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold mb-6 text-blue-400">Tecnologías y Skills</h2>
+          <h2 className="text-4xl font-bold mb-6 text-blue-400">
+            {language === 'es' ? 'Tecnologías y Skills' : 'Technologies and Skills'}
+          </h2>
 
           {/* Lenguajes y tecnologías web */}
-          <h3 className="text-2xl font-semibold mb-4">💻 Lenguajes de Programación</h3>
+          <h3 className="text-2xl font-semibold mb-4">
+            {language === 'es' ? '💻 Lenguajes de Programación' : '💻 Programming Languages'}
+          </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {techs.map(renderSkill)}
           </div>
 
           {/* Bases de datos */}
-          <h3 className="text-2xl font-semibold mb-4">🗄️ Bases de Datos</h3>
+          <h3 className="text-2xl font-semibold mb-4">
+            {language === 'es' ? '🗄️ Bases de Datos' : '🗄️ Databases'}
+          </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {databases.map(renderSkill)}
           </div>
 
           {/* Otros lenguajes y herramientas */}
-          <h3 className="text-2xl font-semibold mb-4">⚙️ Otros Lenguajes y Herramientas</h3>
+          <h3 className="text-2xl font-semibold mb-4">
+            {language === 'es' ? '⚙️ Otros Lenguajes y Herramientas' : '⚙️ Other Languages and Tools'}
+          </h3>
           <div className="flex justify-center flex-wrap gap-3 mb-8">
             {tools.map(renderSkill)}
           </div>
 
           {/* Actualmente aprendiendo */}
-         < h3 className="text-2xl font-semibold mb-4">🚀 Aprendiendo Ahora</h3>
+          <h3 className="text-2xl font-semibold mb-4">
+            {language === 'es' ? '🚀 Aprendiendo Ahora' : '🚀 Currently Learning'}
+          </h3>
           <div className="flex justify-center flex-wrap gap-3">
             {learning.map(renderSkill)}
           </div>
