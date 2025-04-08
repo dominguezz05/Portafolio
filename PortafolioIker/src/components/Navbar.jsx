@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { FaGlobe } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+
+
 
 function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
   const [activeSection, setActiveSection] = useState('');
@@ -80,11 +84,26 @@ function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
 
         {/* Botón cambio de idioma */}
         <button
-          onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
-          className="p-2 rounded-full transition-transform hover:scale-110 focus:outline-none cursor-pointer text-sm"
-        >
-          {language === 'es' ? 'EN' : 'ES'}
-        </button>
+  onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+  className="p-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:bg-blue-500 hover:text-white focus:outline-none text-sm border border-gray-400 hover:border-blue-500 flex items-center gap-1 cursor-pointer"
+>
+  <FaGlobe className={`w-4 h-4 ${language === 'es' ? 'text-red-500' : 'text-blue-500'}`} />
+  
+  <AnimatePresence mode="wait">
+    <motion.span
+      key={language}
+      initial={{ opacity: 0, y: -5 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 5 }}
+      transition={{ duration: 0.3 }}
+    >
+      {language === 'es' ? 'ES' : 'EN'}
+    </motion.span>
+  </AnimatePresence>
+</button>
+
+
+
       </div>
     </nav>
   );
