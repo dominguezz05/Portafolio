@@ -6,6 +6,7 @@ import AboutMe from './components/AboutMe';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import PersonalInfo from './components/PersonalInfo';
+import ProjectDetailModal from './components/ProjectDetailModal';
 
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -46,6 +47,7 @@ function App() {
         <Skills isDarkMode={isDarkMode} language={language} />
         <Footer isDarkMode={isDarkMode} language={language} />
         <ScrollToTop isDarkMode={isDarkMode} />
+        <ProjectDetailModal isDarkMode={isDarkMode} language={language} />
       </main>
     </div>
   );
