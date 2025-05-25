@@ -47,7 +47,7 @@ function App() {
         <Skills isDarkMode={isDarkMode} language={language} />
         <Footer isDarkMode={isDarkMode} language={language} />
         <ScrollToTop isDarkMode={isDarkMode} />
-        <ProjectDetailModal isDarkMode={isDarkMode} language={language} />
+      
       </main>
     </div>
   );

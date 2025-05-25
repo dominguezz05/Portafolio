@@ -34,6 +34,13 @@ const aboutMeContent = {
         institution: 'Proyecto Académico',
         description: 'Sistema de Gestión de Almacenes (SGA) robusto y escalable, desarrollado con React, Vite, Node.js (para API REST), Supabase (PostgreSQL) y TailwindCSS. Incluye autenticación, CRUD de inventario, gestión de pedidos y analíticas.',
       },
+      {
+        id: 3,
+        title: 'Lanzamiento en Google Play: Monkey’s Paradise',
+        period: '2025',
+        institution: 'Proyecto Personal',
+        description: 'Videojuego de plataformas 2D lanzado en Google Play. Incluye múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras una fase de pruebas cerradas y mejoras continuas basadas en feedback.',
+      },
     ],
   },
   en: {
@@ -67,9 +74,17 @@ const aboutMeContent = {
         institution: 'Academic Project ',
         description: 'A robust and scalable Warehouse Management System (WMS) built with React, Vite, Node.js (for REST API), Supabase (PostgreSQL), and TailwindCSS. Features authentication, inventory CRUD, order management, and analytics.',
       },
+      {
+        id: 3,
+        title: 'Google Play Launch: Monkey’s Paradise',
+        period: '2025',
+        institution: 'Personal Project',
+        description: '2D platformer game released on Google Play. Includes multiple levels, bosses, meteorites and optimized touch controls. Published after a closed beta phase and iterative improvements based on user feedback.',
+      },
     ],
   },
 };
+
 
 const JourneyItem = ({ item, isDarkMode, language }) => ( // El language no se usa aquí, se podría quitar si no se prevé
   <div className="relative pl-2">

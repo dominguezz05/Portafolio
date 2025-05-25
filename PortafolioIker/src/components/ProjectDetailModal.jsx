@@ -1,12 +1,12 @@
 // src/components/ProjectDetailModal.js
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink as LinkIcon, Youtube, Image as ImageIcon } from 'lucide-react'; // Usamos LinkIcon para evitar colisión con <a>
+// MODIFICACIÓN AQUÍ: Añadido Github a la importación
+import { X, ExternalLink as LinkIcon, Youtube, Image as ImageIcon, Github } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay as SwiperAutoplay } from 'swiper/modules'; // Renombrado Autoplay para evitar colisión
+import { Pagination, Navigation, Autoplay as SwiperAutoplay } from 'swiper/modules';
 
-// Estilos de Swiper para el modal (si usas un carrusel interno)
-// Puedes omitir estos si no hay carrusel interno o ya los importaste globalmente para el otro carrusel.
+// Estilos de Swiper (si los necesitas específicamente aquí)
 // import 'swiper/css';
 // import 'swiper/css/pagination';
 // import 'swiper/css/navigation';
@@ -43,7 +43,6 @@ const renderList = (items) => {
   );
 };
 
-
 function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
   useEffect(() => {
     const handleEscKey = (event) => {
@@ -57,10 +56,9 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
 
   if (!project) return null;
 
-  // Helper para obtener contenido traducido
   const getLangContent = (keyBase) => {
     const keyLang = `${keyBase}_${language}`;
-    return project[keyLang] || project[keyBase + '_en'] || project[keyBase + '_es'] || null; // Fallback
+    return project[keyLang] || project[keyBase + '_en'] || project[keyBase + '_es'] || null;
   };
   
   const detailSections = [
@@ -98,7 +96,6 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
   };
   const currentModalTexts = modalTexts[language];
 
-
   return (
     <AnimatePresence>
       {project && (
@@ -116,7 +113,6 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
             variants={modalVariants}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón de Cerrar Fijo */}
             <div className={`sticky top-0 p-4 flex justify-between items-center border-b z-10
                            ${isDarkMode ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}>
               <h2 className={`text-2xl md:text-3xl font-bold ${isDarkMode ? 'text-sky-400' : 'text-sky-600'}`}>
@@ -132,10 +128,9 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
               </button>
             </div>
             
-            {/* Contenido Scrolleable */}
             <div className="p-6 md:p-8 space-y-5 text-sm md:text-base leading-relaxed">
-              {project.detailedDescription_es && ( // Asumimos que si hay uno, hay el otro para descripción detallada
-                 <p className="italic text-md mb-6">{getLangContent('detailedDescription')}</p>
+              {project.detailedDescription_es && (
+                   <p className="italic text-md mb-6">{getLangContent('detailedDescription')}</p>
               )}
 
               {detailSections.map(section => (
@@ -157,7 +152,7 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 4000, disableOnInteraction: false }}
                     loop
-                    className="myModalSwiper rounded-lg overflow-hidden mt-2" // Clase para estilos específicos si es necesario
+                    className="myModalSwiper rounded-lg overflow-hidden mt-2"
                   >
                     {project.extraImages.map((img, index) => (
                       <SwiperSlide key={index}>
@@ -183,19 +178,9 @@ function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
                 }/>
               )}
 
-              {/* Enlaces externos del proyecto si los tiene */}
-              <div className="flex flex-wrap gap-3 pt-4 border-t mt-6 ${isDarkMode ? 'border-slate-700' : 'border-slate-200'}">
-                  {project.link && (
-                     <a href={project.link} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-colors ${isDarkMode ? 'bg-slate-700 hover:bg-slate-600 text-white' : 'bg-slate-600 hover:bg-slate-700 text-white'}`}>
-                        <Github size={18}/> GitHub
-                     </a>
-                  )}
-                  {project.preview && (
-                     <a href={project.preview} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-colors ${isDarkMode ? 'bg-sky-600 hover:bg-sky-500 text-white' : 'bg-sky-500 hover:bg-sky-600 text-white'}`}>
-                        <LinkIcon size={18}/> {language === 'es' ? 'Ver Demo' : 'View Demo'}
-                     </a>
-                  )}
-              </div>
+      
+              
+       
             </div>
           </motion.div>
         </motion.div>
