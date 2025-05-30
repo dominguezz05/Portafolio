@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import PersonalInfo from './components/PersonalInfo';
 import ProjectDetailModal from './components/ProjectDetailModal';
+import CarruselPortfolio from './components/CarruselPortfolio';
 
 
 import Footer from './components/Footer';
@@ -44,9 +45,10 @@ function App() {
         <Hero isDarkMode={isDarkMode} language={language} />
         <AboutMe isDarkMode={isDarkMode} language={language} />
         <PersonalInfo isDarkMode={isDarkMode} language={language} />
+        <CarruselPortfolio isDarkMode={isDarkMode} language={language} />
         <Projects isDarkMode={isDarkMode} language={language} />
         <Skills isDarkMode={isDarkMode} language={language} />
-     
+        
         <Footer isDarkMode={isDarkMode} language={language} />
         <ScrollToTop isDarkMode={isDarkMode} />
         
