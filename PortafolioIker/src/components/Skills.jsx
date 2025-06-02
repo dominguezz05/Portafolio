@@ -10,7 +10,7 @@ import {
 } from 'react-icons/si';
 import { FaCode, FaServer } from 'react-icons/fa';
 
-// DATOS DE HABILIDADES (SIN CAMBIOS EN ESTA PARTE)
+// DATOS DE HABILIDADES
 const techs = [
   { name: 'HTML5', icon: SiHtml5, color: 'text-orange-500' },
   { name: 'CSS3', icon: SiCss3, color: 'text-blue-500' },
@@ -52,7 +52,7 @@ const learning = [
   { name: 'Python', icon: SiPython, color: 'text-yellow-400' },
 ];
 
-// TEXTOS PARA i18n (SIN CAMBIOS EN ESTA PARTE)
+// TEXTOS PARA i18n
 const skillsContent = {
   es: {
     mainTitle: 'Tecnologías y Skills',
@@ -74,7 +74,7 @@ const skillsContent = {
   }
 };
 
-// ESTRUCTURA DE CATEGORÍAS (SIN CAMBIOS EN ESTA PARTE)
+// ESTRUCTURA DE CATEGORÍAS
 const skillCategories = [
   { id: 'tech', data: techs, titleKey: 'tech' },
   { id: 'db', data: databases, titleKey: 'db' },
@@ -82,25 +82,26 @@ const skillCategories = [
   { id: 'learning', data: learning, titleKey: 'learning' },
 ];
 
-// VARIANTS DE FRAMER MOTION (SIN CAMBIOS EN ESTA PARTE)
+// VARIANTS DE FRAMER MOTION
 const sectionContainerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.05 } }
 };
 
-// COMPONENTE SkillPill (SIN CAMBIOS EN ESTA PARTE, ya modificado para resaltar)
+// COMPONENTE SkillPill
 const SkillPill = ({ name, icon: Icon, color, isDarkMode }) => {
   let pillBgColor, pillTextColor, pillBorderColor, hoverBgColor;
+  // Estilos para las "píldoras" de habilidades, contrastando con el fondo de la sección.
   if (isDarkMode) {
-    pillBgColor = 'bg-gray-800';
-    pillTextColor = 'text-white';
-    pillBorderColor = 'border-gray-700';
-    hoverBgColor = 'hover:bg-gray-700';
+    pillBgColor = 'bg-slate-800'; // Un poco más claro que el fondo de la sección (slate-900)
+    pillTextColor = 'text-slate-100';
+    pillBorderColor = 'border-slate-700';
+    hoverBgColor = 'hover:bg-slate-700';
   } else {
-    pillBgColor = 'bg-white';
-    pillTextColor = 'text-gray-900';
-    pillBorderColor = 'border-gray-300';
-    hoverBgColor = 'hover:bg-gray-200';
+    pillBgColor = 'bg-white'; // Blanco sobre fondo slate-100
+    pillTextColor = 'text-slate-800';
+    pillBorderColor = 'border-slate-300';
+    hoverBgColor = 'hover:bg-slate-200';
   }
   return (
     <motion.div
@@ -119,15 +120,24 @@ const SkillPill = ({ name, icon: Icon, color, isDarkMode }) => {
 
 function Skills({ isDarkMode, language }) {
   const currentContent = skillsContent[language];
-  // Estos colores son para elementos DENTRO de la sección, no para la sección misma
+  // Colores para los títulos DENTRO de la sección
   const titleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
-  const subtitleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
+  const subtitleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600'; // Mismo color para subtítulos
+
+  // Define el color de fondo sólido para la sección según el tema (oscuro/claro)
+  const sectionBgClass = isDarkMode
+    ? 'bg-slate-900' // Color de fondo para modo oscuro
+    : 'bg-slate-100'; // Color de fondo para modo claro
+
+  // Define el color del texto base para cualquier texto directamente en la sección (si lo hubiera)
+  // Aunque la mayoría del texto está en los títulos o píldoras, es buena práctica para consistencia.
+  const sectionTextColorClass = isDarkMode ? 'text-slate-300' : 'text-slate-700';
 
   return (
     <section 
       id="skills" 
-      // SE HAN ELIMINADO LAS CLASES DE FONDO, TEXTO BASE Y TRANSICIÓN DE COLORES AQUÍ
-      className="py-16 px-8" 
+      // Aplicar la clase de fondo sólido a la sección y el color de texto base.
+      className={`py-16 px-8 transition-colors duration-500 ease-in-out ${sectionBgClass} ${sectionTextColorClass}`}
     >
       <Reveal>
         <div className="text-center mx-auto max-w-4xl">

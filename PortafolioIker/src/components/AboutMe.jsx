@@ -1,7 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Reveal from './Reveal'; // Asumimos que Reveal funciona como se espera
+import AnimatedText from './AnimatedText'; // Asegúrate de que este componente exista
+import { GraduationCap, Lightbulb, Briefcase } from 'lucide-react'; // Iconos para tipos de trayectoria
 
-// 1. Centralizar textos para i18n y datos de la trayectoria (SIN CAMBIOS EN ESTA PARTE)
+// 1. Centralizar textos para i18n y datos de la trayectoria
 const aboutMeContent = {
   es: {
     title: 'Sobre Mí',
@@ -22,22 +24,33 @@ const aboutMeContent = {
     journey: [
       {
         id: 1,
+        type: 'education', // Tipo de hito
         title: 'Ciclo Formativo de Grado Superior: Desarrollo de Aplicaciones Web (DAW)',
         period: '2023 - 2025 ',
         institution: 'Centro de Formación Profesional Medac, Fuenlabrada',
         description: 'Formación integral en desarrollo front-end y back-end, bases de datos, y despliegue de aplicaciones.',
       },
       {
+        id: 4, // Nuevo ID, asegúrate de que sea único y secuencial si importa el orden
+        type: 'work', // Tipo de hito: experiencia laboral
+        title: 'Desarrollador Web en Prácticas – Grupo Oro',
+        period: 'Marzo - Junio 2025', // ACTUALIZA ESTA FECHA
+        institution: 'Grupo Oro',
+        description: 'Durante mi estancia en Grupo Oro, participé activamente en el diseño, desarrollo y mantenimiento de sitios web profesionales utilizando WordPress, Elementor y tecnologías relacionadas. Contribuí a la creación y personalización de proyectos para marcas como Mentamoda, MarbellaPlan, GuindaSpa y Masaka Africana, aplicando principios de experiencia de usuario (UX), SEO y metodologías ágiles como Scrum.\nAdemás, desarrollé proyectos propios de comercio electrónico mediante dropshipping, como la tienda InfluProductos, abordando tanto el diseño visual como la estructura técnica mediante sistemas de gestión de contenidos (CMS), integración de PHP, JSON y estrategias de optimización.'
+      },
+      {
         id: 2,
+        type: 'project', // Tipo de hito
         title: 'Proyecto de Fin de Grado (Destacado): ThreeLogics',
-        period: '2024',
+        period: '2025',
         institution: 'Proyecto Académico',
         description: 'Sistema de Gestión de Almacenes (SGA) robusto y escalable, desarrollado con React, Vite, Node.js (para API REST), Supabase (PostgreSQL) y TailwindCSS. Incluye autenticación, CRUD de inventario, gestión de pedidos y analíticas.',
       },
       {
         id: 3,
+        type: 'project', // Tipo de hito
         title: 'Lanzamiento en Google Play: Monkey’s Paradise',
-        period: '2025',
+        period: '2025', // Considera si esta fecha es correcta si el anterior es 2024
         institution: 'Proyecto Personal',
         description: 'Videojuego de plataformas 2D lanzado en Google Play. Incluye múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras una fase de pruebas cerradas y mejoras continuas basadas en feedback.',
       },
@@ -62,20 +75,31 @@ const aboutMeContent = {
     journey: [
       {
         id: 1,
-        title: 'Higher Level Technical Certificate: Web Application Development (DAW )',
+        type: 'education',
+        title: 'Higher Level Technical Certificate: Web Application Development (DAW)',
         period: '2023 - 2025 ',
         institution: 'Medac Vocational Training Center, Fuenlabrada ',
         description: 'Comprehensive training in front-end and back-end development, databases, and application deployment.',
       },
       {
+        id: 4, // New ID
+        type: 'work',
+        title: 'Intern Web Developer – Grupo Oro',
+        period: 'MAY - June 2025', // UPDATE THIS DATE
+        institution: 'Grupo Oro',
+        description: 'During my time at Grupo Oro, I actively participated in the design, development, and maintenance of professional websites using WordPress, Elementor, and related technologies. I contributed to the creation and customization of projects for brands such as Mentamoda, MarbellaPlan, GuindaSpa, and Masaka Africana, applying user experience (UX) principles, SEO, and agile methodologies like Scrum.\nAdditionally, I developed my own e-commerce dropshipping projects, such as the InfluProductos store, addressing both visual design and technical structure using content management systems (CMS), PHP and JSON integration, and optimization strategies.'
+      },
+      {
         id: 2,
+        type: 'project',
         title: 'Final Degree Project (Featured): ThreeLogics ',
-        period: '2024 ',
+        period: '2025 ',
         institution: 'Academic Project ',
         description: 'A robust and scalable Warehouse Management System (WMS) built with React, Vite, Node.js (for REST API), Supabase (PostgreSQL), and TailwindCSS. Features authentication, inventory CRUD, order management, and analytics.',
       },
       {
         id: 3,
+        type: 'project',
         title: 'Google Play Launch: Monkey’s Paradise',
         period: '2025',
         institution: 'Personal Project',
@@ -85,39 +109,79 @@ const aboutMeContent = {
   },
 };
 
+// Componente para cada item de la trayectoria
+const JourneyItem = ({ item, isDarkMode }) => {
+  let iconColor = '';
+  let dotColorClass = '';
+  let IconComponent;
 
-const JourneyItem = ({ item, isDarkMode, language }) => ( // El language no se usa aquí, se podría quitar si no se prevé
-  <div className="relative pl-2">
-    <div className={`absolute -left-[calc(0.5rem+2px)] top-1.5 w-4 h-4 rounded-full ${isDarkMode ? 'bg-blue-400 border-gray-900' : 'bg-blue-600 border-gray-100'} border-2`}></div>
-    <p className={`font-semibold text-md mb-0.5 ${isDarkMode ? 'text-blue-300' : 'text-blue-700'}`}>
-      {item.title}
-    </p>
-    <p className={`text-xs uppercase tracking-wider font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-      {item.period} {item.institution && `| ${item.institution}`}
-    </p>
-    {item.description && (
-      <p className={`mt-1 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-        {item.description}
+  switch (item.type) {
+    case 'education':
+      IconComponent = GraduationCap;
+      iconColor = isDarkMode ? 'text-blue-300' : 'text-blue-700';
+      dotColorClass = isDarkMode ? 'bg-blue-400 border-gray-900' : 'bg-blue-600 border-gray-100';
+      break;
+    case 'project':
+      IconComponent = Lightbulb;
+      iconColor = isDarkMode ? 'text-green-300' : 'text-green-700';
+      dotColorClass = isDarkMode ? 'bg-green-400 border-gray-900' : 'bg-green-600 border-gray-100';
+      break;
+    case 'work':
+      IconComponent = Briefcase;
+      iconColor = isDarkMode ? 'text-purple-300' : 'text-purple-700';
+      dotColorClass = isDarkMode ? 'bg-purple-400 border-gray-900' : 'bg-purple-600 border-gray-100';
+      break;
+    default:
+      IconComponent = null; // O un icono por defecto
+      iconColor = isDarkMode ? 'text-gray-300' : 'text-gray-700';
+      dotColorClass = isDarkMode ? 'bg-gray-400 border-gray-900' : 'bg-gray-600 border-gray-100';
+  }
+
+  return (
+    <div className="relative pl-8"> {/* Aumentado el padding izquierdo para el icono */}
+      {/* Círculo decorativo para la línea de tiempo */}
+      <div className={`absolute -left-[calc(0.5rem+2px)] top-1.5 w-4 h-4 rounded-full ${dotColorClass} border-2`}></div>
+      
+      {/* Título del hito con icono */}
+      <div className="flex items-center gap-2 mb-0.5">
+        {IconComponent && <IconComponent className={`w-5 h-5 ${iconColor}`} />}
+        <p className={`font-semibold text-md ${iconColor}`}>
+          {item.title}
+        </p>
+      </div>
+
+      {/* Periodo e institución */}
+      <p className={`text-xs uppercase tracking-wider font-medium ml-7 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}> {/* Margen para alinear con título si hay icono */}
+        {item.period} {item.institution && `| ${item.institution}`}
       </p>
-    )}
-  </div>
-);
+      {/* Descripción del hito */}
+      {item.description && (
+        <p className={`mt-1 text-sm ml-7 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}> {/* Margen para alinear */}
+          {item.description}
+        </p>
+      )}
+    </div>
+  );
+};
+
 
 function AboutMe({ isDarkMode, language }) {
   const currentContent = aboutMeContent[language];
   const techHighlightClass = isDarkMode ? 'text-sky-400' : 'text-sky-600';
-  // El color del título principal de la sección también debe ser consistente con App.js o definido aquí
-  const titleColor = isDarkMode ? 'text-sky-400' : 'text-sky-600'; // Manteniendo tu elección de 'sky'
-  // El color de los párrafos de texto simple heredará del <main> en App.js
+  const titleColor = isDarkMode ? 'text-sky-400' : 'text-sky-600';
+
+  const aboutMeBgClass = isDarkMode
+    ? 'bg-slate-900'
+    : 'bg-slate-100';
+
+  const paragraphTextColor = isDarkMode ? 'text-slate-300' : 'text-slate-700';
 
   return (
     <section
       id="about"
-      // SE HAN ELIMINADO LAS CLASES DE FONDO, TEXTO BASE Y TRANSICIÓN DE COLORES AQUÍ
-      className="py-20 px-6 md:px-16" 
+      className={`py-20 px-6 md:px-16 transition-colors duration-500 ease-in-out ${aboutMeBgClass} ${paragraphTextColor}`}
     >
       <div className="max-w-4xl mx-auto text-center">
-        {/* El color del título se sigue manejando aquí porque es un color de acento */}
         <h2 className={`text-4xl font-extrabold mb-12 ${titleColor}`}>
           {currentContent.title}
         </h2>
@@ -132,21 +196,18 @@ function AboutMe({ isDarkMode, language }) {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className="space-y-6 text-left md:text-justify"
             >
-              {/* Los párrafos ahora heredan el color de texto de <main> */}
-              {/* Si necesitas un color específico para estos párrafos que sea diferente al de <main>, */}
-              {/* entonces SÍ deberías añadir clases como 'text-slate-300' o 'dark:text-slate-300' */}
               <p className="text-lg leading-relaxed">
-                {currentContent.greeting}{' '}
+                {currentContent.greeting}
                 <span className={`font-semibold ${techHighlightClass}`}>{currentContent.program}</span>
                 {currentContent.passion}
               </p>
 
               <p className="text-lg leading-relaxed">
-                {currentContent.experienceIntro}{' '}
+                {currentContent.experienceIntro}
                 <span className={`font-medium ${techHighlightClass}`}>{currentContent.coreTech}</span>
-                {currentContent.modernTechIntro}{' '}
+                {currentContent.modernTechIntro}
                 <span className={`font-medium ${techHighlightClass}`}>{currentContent.modernTech}</span>
-                {currentContent.dbIntro}{' '}
+                {currentContent.dbIntro}
                 <span className={`font-medium ${techHighlightClass}`}>{currentContent.dbTech}</span>.
               </p>
 
@@ -155,7 +216,7 @@ function AboutMe({ isDarkMode, language }) {
               </p>
 
               <p className="text-lg leading-relaxed">
-                {currentContent.goal}{' '}
+                {currentContent.goal}
                 <a href="#projects" className={`underline font-medium ${isDarkMode ? 'text-sky-400 hover:text-sky-300' : 'text-sky-600 hover:text-sky-500'}`}>
                   {currentContent.projectsLinkText}
                 </a>
@@ -163,12 +224,12 @@ function AboutMe({ isDarkMode, language }) {
               </p>
 
               <div className="pt-10">
-                <h3 className={`text-3xl font-bold text-center mb-8 ${titleColor}`}> {/* Título de sección con acento */}
+                <h3 className={`text-3xl font-bold text-center mb-8 ${titleColor}`}>
                   {currentContent.journeyTitle}
                 </h3>
-                <div className={`border-l-4 pl-6 space-y-8 ${isDarkMode ? 'border-sky-500' : 'border-sky-600'}`}> {/* Borde con acento */}
+                <div className={`relative border-l-4 pl-6 space-y-10 ${isDarkMode ? 'border-sky-700' : 'border-sky-300'}`}> {/* Color de línea de tiempo ajustado */}
                   {currentContent.journey.map((item) => (
-                    <JourneyItem key={item.id} item={item} isDarkMode={isDarkMode} language={language} />
+                    <JourneyItem key={item.id} item={item} isDarkMode={isDarkMode} />
                   ))}
                 </div>
               </div>

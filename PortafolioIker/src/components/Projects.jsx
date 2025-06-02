@@ -106,12 +106,25 @@ function Projects({ isDarkMode, language }) {
 
   const titleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
 
+  // Define el color de fondo sólido para la sección según el tema (oscuro/claro)
+  const sectionBgClass = isDarkMode
+    ? 'bg-slate-900' // Color de fondo para modo oscuro
+    : 'bg-slate-100'; // Color de fondo para modo claro
+
+  // Define el color del texto base para cualquier texto directamente en la sección (si lo hubiera)
+  // Aunque la mayoría del texto está en las tarjetas de proyecto, es buena práctica para consistencia.
+  const sectionTextColorClass = isDarkMode ? 'text-slate-300' : 'text-slate-700';
+
   return (
     <>
-      <section id="projects" className="py-20 px-4 sm:px-8">
+      <section 
+        id="projects" 
+        // Aplicar la clase de fondo sólido a la sección y el color de texto base.
+        className={`py-20 px-4 sm:px-8 transition-colors duration-500 ease-in-out ${sectionBgClass} ${sectionTextColorClass}`}
+      >
         <Reveal>
           <div className="max-w-7xl mx-auto">
-        <h2 className={`text-4xl md:text-4xl font-bold text-center mb-16 ${titleColor}`}>
+          <h2 className={`text-4xl md:text-4xl font-bold text-center mb-16 ${titleColor}`}>
               <AnimatedText keyProp={`title-${language}`}>
                 💼 {language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}
               </AnimatedText>
@@ -121,11 +134,12 @@ function Projects({ isDarkMode, language }) {
               {projects.map((project) => (
                 <div
                   key={project.title}
+                  // Las tarjetas de proyecto mantienen sus propios estilos de fondo con degradado
                   className={`flex flex-col md:flex-row overflow-hidden rounded-lg shadow-xl hover:scale-[1.02] transition-transform duration-300 
-                              ${isDarkMode
-                                ? 'bg-gradient-to-br from-gray-800 to-gray-900 text-slate-100'
-                                : 'bg-gradient-to-br from-white to-gray-100 text-slate-800'
-                              }`}
+                                  ${isDarkMode
+                                    ? 'bg-gradient-to-br from-gray-800 to-gray-900 text-slate-100' // Tarjeta en modo oscuro
+                                    : 'bg-gradient-to-br from-white to-gray-100 text-slate-800' // Tarjeta en modo claro
+                                  }`}
                 >
                   {project.images && project.images.length > 0 && (
                     <div className="relative w-full md:w-2/5 h-72 md:h-auto group overflow-hidden">
@@ -185,7 +199,7 @@ function Projects({ isDarkMode, language }) {
                         rel="noopener noreferrer"
                         aria-label={`GitHub repository for ${project.title}`}
                         className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-                                    ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-slate-700 hover:bg-slate-800 text-white'}`}
+                                        ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-slate-700 hover:bg-slate-800 text-white'}`}
                       >
                         <Github className="w-4 h-4" /> Code
                       </a>
@@ -196,7 +210,7 @@ function Projects({ isDarkMode, language }) {
                           rel="noopener noreferrer"
                           aria-label={`Live demo of ${project.title}`}
                           className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-                                      ${isDarkMode ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
+                                          ${isDarkMode ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-blue-500 hover:bg-blue-600 text-white'}`}
                         >
                           <ExternalLink className="w-4 h-4" />
                           <AnimatedText keyProp={`${project.title}-preview-${language}`}>
@@ -213,7 +227,7 @@ function Projects({ isDarkMode, language }) {
                           rel="noopener noreferrer"
                           aria-label={`Google Play link for ${project.title}`}
                           className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-                                      ${isDarkMode ? 'bg-green-600 hover:bg-green-500 text-white' : 'bg-green-500 hover:bg-green-600 text-white'}`}
+                                          ${isDarkMode ? 'bg-green-600 hover:bg-green-500 text-white' : 'bg-green-500 hover:bg-green-600 text-white'}`}
                         >
                           <PlayCircle className="w-4 h-4" />
                           <AnimatedText keyProp={`${project.title}-gplay-${language}`}>
@@ -226,7 +240,7 @@ function Projects({ isDarkMode, language }) {
                           onClick={() => openModalWithProject(project)}
                           aria-label={`${language === 'es' ? 'Leer más sobre el proyecto' : 'Read more about the project'} ${project.title}`}
                           className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-                                      ${isDarkMode ? 'bg-purple-600 hover:bg-purple-500 text-white' : 'bg-purple-500 hover:bg-purple-600 text-white'}`}
+                                          ${isDarkMode ? 'bg-purple-600 hover:bg-purple-500 text-white' : 'bg-purple-500 hover:bg-purple-600 text-white'}`}
                         >
                           {language === 'es' ? 'Leer Más...' : 'Read More...'}
                         </button>
