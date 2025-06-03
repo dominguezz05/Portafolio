@@ -14,7 +14,7 @@ import ProjectDetailModal from '../components/ProjectDetailModal';
 
 // --- IMÁGENES DE PROYECTOS ---
 // (Asegúrate que estas rutas son correctas y las imágenes existen)
-import threeLogicsImage1 from '../assets/qr.png';
+
 import threeLogicsImage2 from '../assets/threelogics22.png';
 import threeLogicsImage3 from '../assets/dasboard.png';
 
@@ -34,7 +34,7 @@ const projects = [
     technologies: ['React', 'Node.js + Express', 'Supabase', 'Tailwind CSS', 'Google Cloud', 'Vercel', 'Recharts', 'Render', 'API-rest', 'Framer-motion'],
     link: 'https://github.com/threeLogics/threelogics-app',
     preview: 'https://threelogicsapp.vercel.app/',
-    images: [threeLogicsImage1, threeLogicsImage2, threeLogicsImage3],
+    images: [ threeLogicsImage2, threeLogicsImage3],
     detailedDescription_es: 'ThreeLogics es un Sistema de Gestión de Almacenes (WMS) para pequeñas y medianas empresas. Permite gestionar inventarios, pedidos, ubicaciones y movimientos de productos, todo con control de roles, estadísticas en tiempo real y análisis predictivo de demanda.',
     detailedDescription_en: 'ThreeLogics is a Warehouse Management System (WMS) for small and medium-sized enterprises. It enables inventory, order, location, and product movement management, with role-based access, real-time stats, and demand prediction analysis.',
     problem_es: 'Las PYMEs a menudo carecen de soluciones WMS personalizables y económicas que integren analítica avanzada sin necesidad de infraestructura compleja.',
