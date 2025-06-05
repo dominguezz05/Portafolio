@@ -90,7 +90,8 @@ function Hero({ isDarkMode, language }) {
     : 'bg-gradient-to-b from-slate-300 to-slate-100';
 
   // Definir el color de texto base para el h1, que cambiará con isDarkMode
-  const heroTitleColor = isDarkMode ? 'text-slate-100' : 'text-slate-900';
+  const heroTitleColor = isDarkMode ? 'text-slate-100 hover:text-cyan-300' : 'text-slate-900 hover:text-sky-600';
+
 
   return (
     <section
@@ -120,16 +121,22 @@ function Hero({ isDarkMode, language }) {
               loading="lazy"
               style={{ objectPosition: 'center 25%' }}
             />
-            <div
+      <div
               ref={tooltipRef}
-              className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none w-64 z-20"
+              className={`absolute bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none z-20 \
+                w-auto max-w-[calc(100vw-4rem)] left-1/2 -translate-x-1/2 top-full mt-3 \
+                sm:w-64 sm:max-w-none sm:left-auto sm:right-full sm:top-1/2 sm:-translate-x-0 sm:-translate-y-1/2 sm:mt-0 sm:mr-2`}
             >
               <p className="text-sm font-medium leading-snug">
                 {language === 'es'
                   ? '¡Hola! Soy Iker, desarrollador full-stack creativo y técnico. Conoce más sobre mi.'
                   : 'Hi! I’m Iker, a creative and technical full-stack developer. Learn more about me.'}
               </p>
-              <div className="absolute left-full top-1/2 -translate-y-1/2 w-3 h-3 bg-slate-800 rotate-45 shadow-md"></div>
+              <div
+                className={`absolute w-3 h-3 bg-slate-800 rotate-45 shadow-md \
+                  bottom-full left-1/2 -translate-x-1/2 mb-[-5px] \
+                  sm:left-full sm:top-1/2 sm:bottom-auto sm:-translate-x-0 sm:-translate-y-1/2 sm:mb-0 sm:ml-[-5px]`}
+              ></div>
             </div>
           </div>
           <a
@@ -160,7 +167,8 @@ function Hero({ isDarkMode, language }) {
           // Se añade la clase heroTitleColor para el color base del texto.
           // Framer Motion aplicará el 'color' en whileHover como un estilo inline, que tendrá precedencia.
           className={`text-4xl sm:text-5xl md:text-6xl font-extrabold cursor-pointer ${heroTitleColor}`}
-          whileHover={{ scale: 1.05, color: isDarkMode ? '#67e8f9' : '#0ea5e9' }} // Color en hover: cyan claro (oscuro), sky blue (claro)
+         whileHover={{ scale: 1.05 }}
+ // Color en hover: cyan claro (oscuro), sky blue (claro)
           whileTap={{ scale: 0.95 }}
         >
           Iker Domínguez
