@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import Reveal from './Reveal'; // Asumimos que Reveal funciona como se espera
-import AnimatedText from './AnimatedText'; // Asegúrate de que este componente exista
-import { GraduationCap, Lightbulb, Briefcase } from 'lucide-react'; // Iconos para tipos de trayectoria
+import Reveal from './Reveal';
+import AnimatedText from './AnimatedText';
+import { GraduationCap, Lightbulb, Briefcase } from 'lucide-react';
+import useIsMobile from '../hooks/useIsMobile'; // Ajusta la ruta a tu hook
 
 // 1. Centralizar textos para i18n y datos de la trayectoria
 const aboutMeContent = {
@@ -34,7 +35,7 @@ const aboutMeContent = {
         id: 4, // Nuevo ID, asegúrate de que sea único y secuencial si importa el orden
         type: 'work', // Tipo de hito: experiencia laboral
         title: 'Desarrollador Web en Prácticas – Grupo Oro',
-        period: 'Marzo - Junio 2025', // ACTUALIZA ESTA FECHA
+        period: 'Marzo - Junio 2025',
         institution: 'Grupo Oro',
         description: 'Durante mi estancia en Grupo Oro, participé activamente en el diseño, desarrollo y mantenimiento de sitios web profesionales utilizando WordPress, Elementor y tecnologías relacionadas. Contribuí a la creación y personalización de proyectos para marcas como Mentamoda, MarbellaPlan, GuindaSpa y Masaka Africana, aplicando principios de experiencia de usuario (UX), SEO y metodologías ágiles como Scrum.\nAdemás, desarrollé proyectos propios de comercio electrónico mediante dropshipping, como la tienda InfluProductos, abordando tanto el diseño visual como la estructura técnica mediante sistemas de gestión de contenidos (CMS), integración de PHP, JSON y estrategias de optimización.'
       },
@@ -50,7 +51,7 @@ const aboutMeContent = {
         id: 3,
         type: 'project', // Tipo de hito
         title: 'Lanzamiento en Google Play: Monkey’s Paradise',
-        period: '2025', // Considera si esta fecha es correcta si el anterior es 2024
+        period: '2025',
         institution: 'Proyecto Personal',
         description: 'Videojuego de plataformas 2D lanzado en Google Play. Incluye múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras una fase de pruebas cerradas y mejoras continuas basadas en feedback.',
       },
@@ -85,7 +86,7 @@ const aboutMeContent = {
         id: 4, // New ID
         type: 'work',
         title: 'Intern Web Developer – Grupo Oro',
-        period: 'MAY - June 2025', // UPDATE THIS DATE
+        period: 'MAY - June 2025',
         institution: 'Grupo Oro',
         description: 'During my time at Grupo Oro, I actively participated in the design, development, and maintenance of professional websites using WordPress, Elementor, and related technologies. I contributed to the creation and customization of projects for brands such as Mentamoda, MarbellaPlan, GuindaSpa, and Masaka Africana, applying user experience (UX) principles, SEO, and agile methodologies like Scrum.\nAdditionally, I developed my own e-commerce dropshipping projects, such as the InfluProductos store, addressing both visual design and technical structure using content management systems (CMS), PHP and JSON integration, and optimization strategies.'
       },
@@ -138,25 +139,19 @@ const JourneyItem = ({ item, isDarkMode }) => {
   }
 
   return (
-    <div className="relative pl-8"> {/* Aumentado el padding izquierdo para el icono */}
-      {/* Círculo decorativo para la línea de tiempo */}
+    <div className="relative pl-8">
       <div className={`absolute -left-[calc(0.5rem+2px)] top-1.5 w-4 h-4 rounded-full ${dotColorClass} border-2`}></div>
-      
-      {/* Título del hito con icono */}
       <div className="flex items-center gap-2 mb-0.5">
         {IconComponent && <IconComponent className={`w-5 h-5 ${iconColor}`} />}
         <p className={`font-semibold text-md ${iconColor}`}>
           {item.title}
         </p>
       </div>
-
-      {/* Periodo e institución */}
-      <p className={`text-xs uppercase tracking-wider font-medium ml-7 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}> {/* Margen para alinear con título si hay icono */}
+      <p className={`text-xs uppercase tracking-wider font-medium ml-7 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
         {item.period} {item.institution && `| ${item.institution}`}
       </p>
-      {/* Descripción del hito */}
       {item.description && (
-        <p className={`mt-1 text-sm ml-7 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}> {/* Margen para alinear */}
+        <p className={`mt-1 text-sm ml-7 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
           {item.description}
         </p>
       )}
@@ -166,15 +161,23 @@ const JourneyItem = ({ item, isDarkMode }) => {
 
 
 function AboutMe({ isDarkMode, language }) {
+  const isMobile = useIsMobile(); // Detecta si es móvil
   const currentContent = aboutMeContent[language];
   const techHighlightClass = isDarkMode ? 'text-sky-400' : 'text-sky-600';
   const titleColor = isDarkMode ? 'text-sky-400' : 'text-sky-600';
-
-  const aboutMeBgClass = isDarkMode
-    ? 'bg-slate-900'
-    : 'bg-slate-100';
-
+  const aboutMeBgClass = isDarkMode ? 'bg-slate-900' : 'bg-slate-100';
   const paragraphTextColor = isDarkMode ? 'text-slate-300' : 'text-slate-700';
+
+  // Variantes condicionales para la animación de cambio de idioma
+  const innerContentVariants = {
+    hidden: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+    exit: isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 },
+  };
+
+  const innerContentTransition = isMobile
+    ? { duration: 0 }
+    : { duration: 0.5, ease: 'easeInOut' };
 
   return (
     <section
@@ -186,14 +189,16 @@ function AboutMe({ isDarkMode, language }) {
           {currentContent.title}
         </h2>
 
-        <Reveal>
+        {/* Usamos Reveal con la prop 'animationEnabled' para desactivar la animación en móvil */}
+        <Reveal animationEnabled={!isMobile}>
           <AnimatePresence mode="wait">
             <motion.div
               key={language}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              variants={innerContentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={innerContentTransition}
               className="space-y-6 text-left md:text-justify"
             >
               <p className="text-lg leading-relaxed">
@@ -201,7 +206,6 @@ function AboutMe({ isDarkMode, language }) {
                 <span className={`font-semibold ${techHighlightClass}`}>{currentContent.program}</span>
                 {currentContent.passion}
               </p>
-
               <p className="text-lg leading-relaxed">
                 {currentContent.experienceIntro}
                 <span className={`font-medium ${techHighlightClass}`}>{currentContent.coreTech}</span>
@@ -210,11 +214,9 @@ function AboutMe({ isDarkMode, language }) {
                 {currentContent.dbIntro}
                 <span className={`font-medium ${techHighlightClass}`}>{currentContent.dbTech}</span>.
               </p>
-
               <p className="text-lg leading-relaxed">
                 {currentContent.personality}
               </p>
-
               <p className="text-lg leading-relaxed">
                 {currentContent.goal}
                 <a href="#projects" className={`underline font-medium ${isDarkMode ? 'text-sky-400 hover:text-sky-300' : 'text-sky-600 hover:text-sky-500'}`}>
@@ -222,12 +224,11 @@ function AboutMe({ isDarkMode, language }) {
                 </a>
                 {currentContent.goalContinuation}
               </p>
-
               <div className="pt-10">
                 <h3 className={`text-3xl font-bold text-center mb-8 ${titleColor}`}>
                   {currentContent.journeyTitle}
                 </h3>
-                <div className={`relative border-l-4 pl-6 space-y-10 ${isDarkMode ? 'border-sky-700' : 'border-sky-300'}`}> {/* Color de línea de tiempo ajustado */}
+                <div className={`relative border-l-4 pl-6 space-y-10 ${isDarkMode ? 'border-sky-700' : 'border-sky-300'}`}>
                   {currentContent.journey.map((item) => (
                     <JourneyItem key={item.id} item={item} isDarkMode={isDarkMode} />
                   ))}
