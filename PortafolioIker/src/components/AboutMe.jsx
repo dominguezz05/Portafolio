@@ -55,6 +55,15 @@ const aboutMeContent = {
         institution: 'Proyecto Personal',
         description: 'Videojuego de plataformas 2D lanzado en Google Play. Incluye múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras una fase de pruebas cerradas y mejoras continuas basadas en feedback.',
       },
+{
+  id: 4,
+  type: 'project',
+  title: 'DevToll Express',
+  period: '2025',
+  institution: 'Proyecto Personal',
+  description: 'Herramienta de productividad todo-en-uno para desarrolladores, que integra utilidades esenciales: generadores de archivos README.md y .gitignore, convertidor JSON↔CSV, minificador de código HTML/CSS/JS, asistente de comandos Git, gestor de snippets, generador visual de configuración Prettier, conversor de unidades CSS y decodificador JWT. Diseñada con una interfaz limpia, vistas previas en tiempo real y flujos de trabajo rápidos e intuitivos. Desarrollada como proyecto personal para optimizar tareas comunes del día a día.',
+}
+
     ],
   },
   en: {
@@ -106,6 +115,15 @@ const aboutMeContent = {
         institution: 'Personal Project',
         description: '2D platformer game released on Google Play. Includes multiple levels, bosses, meteorites and optimized touch controls. Published after a closed beta phase and iterative improvements based on user feedback.',
       },
+      {
+  id: 4,
+  type: 'project',
+  title: 'DevToll Express',
+  period: '2025',
+  institution: 'Personal Project',
+  description: 'All-in-one productivity tool for developers featuring a collection of essential utilities: README.md and .gitignore file generators, JSON↔CSV converter, code minifier for HTML/CSS/JS, Git command helper, snippet manager, Prettier config builder, CSS unit converter, and JWT decoder. Designed with a clean UI, real-time previews, and optimized for fast, intuitive workflows. Built as a personal project to streamline daily development tasks.',
+}
+
     ],
   },
 };

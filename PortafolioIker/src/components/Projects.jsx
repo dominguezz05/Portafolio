@@ -25,6 +25,9 @@ import monkeyParadiseImage2 from '../assets/game.jpg';
 
 import monkeyParadiseImage3 from '../assets/game3.jpg';
 import monkeyParadiseImage4 from '../assets/monkey.png';
+import devtollImage1 from '../assets/Landing_Devtools.png'
+import devtollImage2 from '../assets/Home_Dev.png';
+import devtollImage3 from '../assets/herramienta.png';
 // --- DATOS DE PROYECTOS CON DETALLES PARA EL MODAL ---
 const projects = [
   {
@@ -78,7 +81,50 @@ const projects = [
     extraImages: [], // Puedes añadir más capturas si lo deseas
     videoUrl: 'https://www.youtube.com/embed/e7BODpJaCXA'
 
-  }
+  },
+  {
+  title: "DevToll Express",
+  description_es: 'Suite de utilidades para desarrolladores web: genera archivos, transforma datos, administra fragmentos de código y más desde una interfaz unificada.',
+  description_en: 'Web developer utility suite: generate files, transform data, manage code snippets, and more from a unified interface.',
+  technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Vite', 'Framer-Motion', 'LocalStorage'],
+  link: 'https://github.com/dominguezz05/devtools-express',
+  preview: 'https://devtools-express.vercel.app/',
+  images: [devtollImage1, devtollImage2, devtollImage3], 
+  googlePlayLink: null, // No aplica en este caso
+  detailedDescription_es: 'DevToll Express es una plataforma de herramientas web diseñada para desarrolladores. Incluye generadores de README.md y .gitignore, convertidor JSON ↔ CSV, minificador de código, asistente de comandos Git, editor de snippets, creador de configuración Prettier, conversor de unidades CSS y decodificador JWT. Todo accesible desde una interfaz intuitiva y responsiva.',
+  detailedDescription_en: 'DevToll Express is a web-based tool suite built for developers. It features a README.md and .gitignore generator, JSON ↔ CSV converter, code minifier, Git command helper, snippet editor, Prettier config creator, CSS unit converter, and JWT decoder — all within a clean, responsive interface.',
+  problem_es: 'Centralizar herramientas de uso diario en desarrollo web, evitando tener múltiples pestañas o recursos dispersos.',
+  problem_en: 'Centralize everyday web development tools to avoid juggling multiple tabs or scattered resources.',
+  myRole_es: 'Diseñé y desarrollé por completo la aplicación: desde el frontend en React hasta la integración de cada herramienta con persistencia local.',
+  myRole_en: 'I fully designed and developed the application: from the React frontend to the integration of each tool with local persistence.',
+  techStackDetails_es: 'React con Vite para un frontend rápido, Tailwind CSS para el diseño, LocalStorage para guardar configuraciones y Vercel para el despliegue.',
+  techStackDetails_en: 'React with Vite for a fast frontend, Tailwind CSS for styling, LocalStorage for config persistence, and Vercel for deployment.',
+  challenges_es: [
+    'Diseñar una interfaz que unificara varias herramientas distintas sin perder usabilidad.',
+    'Mantener la aplicación ligera y rápida en el navegador.',
+    'Implementar almacenamiento local para preservar el estado del usuario.',
+  ],
+  challenges_en: [
+    'Design a UI that unifies multiple tools without sacrificing usability.',
+    'Keep the app lightweight and fast in the browser.',
+    'Implement local storage to preserve user state.',
+  ],
+  solutions_es: [
+    'Uso de componentes reutilizables y navegación clara.',
+    'Optimización del rendimiento con Vite y carga diferida.',
+    'Integración de LocalStorage para guardar preferencias y datos.',
+  ],
+  solutions_en: [
+    'Use of reusable components and clear navigation.',
+    'Performance optimization via Vite and lazy loading.',
+    'LocalStorage integration to save user preferences and data.',
+  ],
+  learnings_es: 'Mejoré mis habilidades en React, diseño de interfaces y despliegue web. Aprendí a integrar múltiples funcionalidades dentro de una sola experiencia fluida.',
+  learnings_en: 'I improved my skills in React, UI design, and web deployment. Learned how to integrate multiple features into a single smooth experience.',
+  extraImages: [],
+  videoUrl: null
+}
+
 ];
 
 
