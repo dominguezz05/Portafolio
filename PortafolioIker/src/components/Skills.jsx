@@ -6,99 +6,133 @@ import {
   SiHtml5, SiCss3, SiReact, SiBootstrap, SiGreensock, SiPhp, SiJavascript, SiTailwindcss,
   SiMysql, SiMongodb, SiSupabase, SiPython, SiGit, SiNodedotjs, SiXampp,
   SiGithub, SiVercel, SiPostman, SiDocker, SiAngular, SiAstro, SiJquery, SiWordpress, SiElementor,
-  SiTypescript, SiNextdotjs, SiExpress, SiSass, SiFigma, SiJest
+  SiTypescript, SiNextdotjs, SiExpress, SiSass, SiFigma, SiJest, SiKotlin, SiAndroidstudio, SiSqlite, SiGradle, SiJunit5
 } from 'react-icons/si';
-import { FaCode, FaServer } from 'react-icons/fa';
+import { FaCode, FaServer, FaJava } from 'react-icons/fa';
 
-// DATOS DE HABILIDADES
-const techs = [
+// ====== DATA ======
+
+// Frontend
+const frontend = [
   { name: 'HTML5', icon: SiHtml5, color: 'text-orange-500' },
   { name: 'CSS3', icon: SiCss3, color: 'text-blue-500' },
+  { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-500' },
+  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
   { name: 'React', icon: SiReact, color: 'text-sky-400' },
+  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
+  { name: 'TailwindCSS', icon: SiTailwindcss, color: 'text-sky-300' },
   { name: 'Bootstrap', icon: SiBootstrap, color: 'text-purple-500' },
   { name: 'GSAP', icon: SiGreensock, color: 'text-green-500' },
-  { name: 'PHP', icon: SiPhp, color: 'text-indigo-500' },
-  { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-500' },
-  { name: 'Tailwind', icon: SiTailwindcss, color: 'text-sky-300' },
-  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
   { name: 'SASS', icon: SiSass, color: 'text-pink-500' },
 ];
+
+// Backend
+const backend = [
+  { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-500' },
+  { name: 'Express.js', icon: SiExpress, color: 'text-neutral-500 dark:text-neutral-400' },
+  { name: 'PHP', icon: SiPhp, color: 'text-indigo-500' },
+];
+// Mobile Development
+const mobile = [
+  { name: 'Java', icon: FaJava, color: 'text-orange-600' },
+  { name: 'Kotlin', icon: SiKotlin, color: 'text-purple-600' },
+  { name: 'Android Studio', icon: SiAndroidstudio, color: 'text-green-600' },
+  // Si usas Compose, puedes indicarlo en el nombre. No hay icono propio en react-icons:
+  { name: 'Jetpack Compose / XML', icon: SiAndroidstudio, color: 'text-emerald-600' },
+  { name: 'SQLite / Room', icon: SiSqlite, color: 'text-blue-600' },
+  { name: 'Retrofit (REST/JSON)', icon: FaServer, color: 'text-green-500' },
+  { name: 'Gradle', icon: SiGradle, color: 'text-lime-600' },
+  { name: 'JUnit', icon: SiJunit5, color: 'text-red-600' },
+];
+
+// Databases
 const databases = [
   { name: 'MySQL', icon: SiMysql, color: 'text-blue-500' },
   { name: 'MongoDB', icon: SiMongodb, color: 'text-green-500' },
-  { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-500' },
+  { name: 'Supabase (PostgreSQL)', icon: SiSupabase, color: 'text-emerald-500' },
 ];
+
+// Tools & Methodologies
 const tools = [
+  // Version control & deploy
   { name: 'Git', icon: SiGit, color: 'text-red-500' },
-  { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-400' },
-  { name: 'Express.js', icon: SiExpress, color: 'text-neutral-500 dark:text-neutral-400' },
-  { name: 'XAMPP', icon: SiXampp, color: 'text-orange-500' },
   { name: 'GitHub', icon: SiGithub, color: 'text-gray-500' },
   { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
+  { name: 'XAMPP', icon: SiXampp, color: 'text-orange-500' },
+
+  // APIs & collaboration
+  { name: 'REST APIs', icon: FaServer, color: 'text-green-500' },
   { name: 'Postman', icon: SiPostman, color: 'text-orange-600' },
-  { name: 'JQuery', icon: SiJquery, color: 'text-orange-600' },
   { name: 'Ajax', icon: FaCode, color: 'text-purple-400' },
-  { name: 'ApiRest', icon: FaServer, color: 'text-green-500' },
+  { name: 'jQuery', icon: SiJquery, color: 'text-blue-500' },
+
+  // CMS & design & testing
   { name: 'WordPress', icon: SiWordpress, color: 'text-blue-600' },
   { name: 'Elementor', icon: SiElementor, color: 'text-pink-500' },
   { name: 'Figma', icon: SiFigma, color: 'text-purple-500' },
   { name: 'Jest', icon: SiJest, color: 'text-red-600' },
 ];
+
+// Currently learning
 const learning = [
   { name: 'Docker', icon: SiDocker, color: 'text-blue-400' },
-  { name: 'Angular', icon: SiAngular, color: 'text-black dark:text-white' },
-  { name: 'Astro', icon: SiAstro, color: 'text-red-500' },
+  { name: 'Angular', icon: SiAngular, color: 'text-red-600' },
+  { name: 'Astro', icon: SiAstro, color: 'text-yellow-500' },
   { name: 'Python', icon: SiPython, color: 'text-yellow-400' },
 ];
 
-// TEXTOS PARA i18n
+// ====== i18n TEXTS ======
 const skillsContent = {
   es: {
-    mainTitle: 'Tecnologías y Skills',
+    mainTitle: 'Tecnologías y Habilidades',
     categories: {
-      tech: { title: '💻 Lenguajes de Programación' },
+      frontend: { title: '🎨 Desarrollo Frontend' },
+      backend: { title: '🛠️ Desarrollo Backend' },
+      mobile:  { title: '📱 Desarrollo Mobile (Android)' },
       db: { title: '🗄️ Bases de Datos' },
-      tools: { title: '⚙️ Otros Lenguajes y Herramientas' },
-      learning: { title: '🚀 Aprendiendo Ahora' },
+      tools: { title: '⚙️ Herramientas y Metodologías' },
+      learning: { title: '🚀 Aprendiendo ahora' },
     }
   },
   en: {
     mainTitle: 'Technologies and Skills',
     categories: {
-      tech: { title: '💻 Programming Languages' },
+      frontend: { title: '🎨 Frontend Development' },
+      backend: { title: '🛠️ Backend Development' },
+       mobile:   { title: '📱 Mobile Development (Android)' },
       db: { title: '🗄️ Databases' },
-      tools: { title: '⚙️ Other Languages and Tools' },
+      tools: { title: '⚙️ Tools & Methodologies' },
       learning: { title: '🚀 Currently Learning' },
     }
   }
 };
 
-// ESTRUCTURA DE CATEGORÍAS
+// ====== CATEGORY STRUCTURE ======
 const skillCategories = [
-  { id: 'tech', data: techs, titleKey: 'tech' },
+  { id: 'frontend', data: frontend, titleKey: 'frontend' },
+  { id: 'backend', data: backend, titleKey: 'backend' },
+   { id: 'mobile',   data: mobile,   titleKey: 'mobile' },  
   { id: 'db', data: databases, titleKey: 'db' },
   { id: 'tools', data: tools, titleKey: 'tools' },
   { id: 'learning', data: learning, titleKey: 'learning' },
 ];
 
-// VARIANTS DE FRAMER MOTION
+// ====== FRAMER VARIANTS ======
 const sectionContainerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.05 } }
 };
 
-// COMPONENTE SkillPill
+// ====== SKILL PILL ======
 const SkillPill = ({ name, icon: Icon, color, isDarkMode }) => {
   let pillBgColor, pillTextColor, pillBorderColor, hoverBgColor;
-  // Estilos para las "píldoras" de habilidades, contrastando con el fondo de la sección.
   if (isDarkMode) {
-    pillBgColor = 'bg-slate-800'; // Un poco más claro que el fondo de la sección (slate-900)
+    pillBgColor = 'bg-slate-800';
     pillTextColor = 'text-slate-100';
     pillBorderColor = 'border-slate-700';
     hoverBgColor = 'hover:bg-slate-700';
   } else {
-    pillBgColor = 'bg-white'; // Blanco sobre fondo slate-100
+    pillBgColor = 'bg-white';
     pillTextColor = 'text-slate-800';
     pillBorderColor = 'border-slate-300';
     hoverBgColor = 'hover:bg-slate-200';
@@ -118,25 +152,17 @@ const SkillPill = ({ name, icon: Icon, color, isDarkMode }) => {
   );
 };
 
+// ====== COMPONENT ======
 function Skills({ isDarkMode, language }) {
   const currentContent = skillsContent[language];
-  // Colores para los títulos DENTRO de la sección
   const titleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
-  const subtitleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600'; // Mismo color para subtítulos
-
-  // Define el color de fondo sólido para la sección según el tema (oscuro/claro)
-  const sectionBgClass = isDarkMode
-    ? 'bg-slate-900' // Color de fondo para modo oscuro
-    : 'bg-slate-100'; // Color de fondo para modo claro
-
-  // Define el color del texto base para cualquier texto directamente en la sección (si lo hubiera)
-  // Aunque la mayoría del texto está en los títulos o píldoras, es buena práctica para consistencia.
+  const subtitleColor = isDarkMode ? 'text-blue-400' : 'text-blue-600';
+  const sectionBgClass = isDarkMode ? 'bg-slate-900' : 'bg-slate-100';
   const sectionTextColorClass = isDarkMode ? 'text-slate-300' : 'text-slate-700';
 
   return (
-    <section 
-      id="skills" 
-      // Aplicar la clase de fondo sólido a la sección y el color de texto base.
+    <section
+      id="skills"
       className={`py-16 px-8 transition-colors duration-500 ease-in-out ${sectionBgClass} ${sectionTextColorClass}`}
     >
       <Reveal>

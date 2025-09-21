@@ -190,7 +190,7 @@ function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
           <button
             onClick={toggleTheme}
             aria-label={isDarkMode ? currentTexts.toggleToLight : currentTexts.toggleToDark}
-            className={`p-2 rounded-full transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-500 
+            className={`p-2 rounded-full transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-500 cursor-pointer
                         ${isMobileMenuOpen && isDarkMode ? 'text-slate-100 hover:bg-white/10' : 
                          isMobileMenuOpen && !isDarkMode ? 'text-slate-800 hover:bg-black/10' : 
                          navTextColorClass + ' hover:bg-white/10 dark:hover:bg-black/10'}`}
@@ -217,7 +217,7 @@ function Navbar({ isDarkMode, toggleTheme, language, setLanguage }) {
             onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
             aria-label={language === 'es' ? currentTexts.toggleLangToEn : currentTexts.toggleLangToEs}
             className={`p-2 rounded-full transition-all duration-200 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-500
-                        flex items-center gap-1.5 text-xs md:text-sm font-medium border
+                        flex items-center gap-1.5 text-xs md:text-sm font-medium border cursor-pointer
                         ${isDarkMode
                             ? 'border-slate-600 hover:bg-slate-700 hover:border-slate-500'
                             : 'border-slate-300 hover:bg-slate-200 hover:border-slate-400'}

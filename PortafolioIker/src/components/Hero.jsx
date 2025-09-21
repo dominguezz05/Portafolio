@@ -156,7 +156,7 @@ function Hero({ isDarkMode, language }) {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-current"></span>
               </span>
               <AnimatedText keyProp={`available-${language}`}>
-                {language === 'es' ? 'Disponible' : 'Available'}
+                {language === 'es' ? 'Open to work' : 'Open to work'}
               </AnimatedText>
             </span>
           </a>
@@ -182,8 +182,8 @@ function Hero({ isDarkMode, language }) {
             as="p"
           >
             {language === 'es'
-              ? 'Desarrollador Web Full-Stack | Creativo | Apasionado por la tecnología'
-              : 'Full-Stack Web Developer | Creative | Passionate about technology'}
+              ? 'Junior Full Stack Developer | React · Node.js · TypeScript · MongoDB'
+              : 'Junior Full Stack Developer | React · Node.js · TypeScript · MongoDB'}
           </AnimatedText>
         </motion.div>
 

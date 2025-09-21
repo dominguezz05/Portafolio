@@ -8,123 +8,152 @@ import useIsMobile from '../hooks/useIsMobile'; // Ajusta la ruta a tu hook
 const aboutMeContent = {
   es: {
     title: 'Sobre Mí',
-    greeting: '¡Hola! Soy un apasionado desarrollador web en formación, actualmente cursando el ciclo de ',
-    program: 'Desarrollo de Aplicaciones Web (DAW) ',
-    passion: '. Desde que descubrí el mundo de la programación, me ha fascinado la posibilidad de transformar ideas en experiencias digitales reales. ',
-    experienceIntro: 'Durante mi formación, he adquirido experiencia trabajando con tecnologías como ',
-    coreTech: 'HTML, CSS, JavaScript, PHP, MySQL ',
-    modernTechIntro: 'y recientemente me he sumergido en el ecosistema moderno con herramientas como ',
-    modernTech: 'React, Node.js, TailwindCSS ',
-    dbIntro: 'y bases de datos NoSQL como ',
-    dbTech: 'MongoDB y Supabase (PostgreSQL avanzado) ',
-    personality: 'Me considero una persona creativa, curiosa y en constante evolución. Disfruto resolviendo problemas, experimentando con nuevas tecnologías y colaborando en proyectos reales que me permitan seguir aprendiendo. ',
-    goal: 'Mi objetivo es fusionar creatividad y tecnología para crear soluciones digitales innovadoras que impacten positivamente en las personas y en las empresas. Si quieres saber más sobre mí, no dudes en echar un vistazo a mis ',
-    projectsLinkText: 'proyectos ',
-    goalContinuation: 'o ponerte en contacto. ',
+  greeting: '¡Hola! Soy un desarrollador Full Stack junior, titulado en ',
+  program: 'Desarrollo de Aplicaciones Web (DAW) y actualmente cursando 2º de Desarrollo de Aplicaciones Multiplataforma (DAM). ',
+  passion: 'Desde que descubrí el mundo de la programación, me ha fascinado la posibilidad de transformar ideas en experiencias digitales reales. ',
+  experienceIntro: 'A lo largo de mi formación y proyectos he adquirido experiencia en diferentes áreas del desarrollo: ',
+  coreTech: 'Frontend: HTML, CSS, JavaScript, TypeScript, React, TailwindCSS, Bootstrap. ',
+  modernTechIntro: 'Backend: Node.js, Express, PHP, Python (en aprendizaje). ',
+  modernTech: 'Bases de datos: MySQL, MongoDB, Supabase (PostgreSQL avanzado). ',
+  dbIntro: 'Herramientas y metodologías: Git, GitHub, Docker, Postman, Agile/Scrum, Vercel, Figma. ',
+  dbTech: '',
+  personality: 'Me considero una persona creativa, resolutiva y en constante evolución. Disfruto resolviendo problemas, explorando nuevas tecnologías y colaborando en proyectos que me permitan seguir aprendiendo. ',
+  goal: 'Busco aplicar mis conocimientos en proyectos reales dentro de un equipo profesional, aportando compromiso, creatividad y capacidad de aprendizaje continuo. ',
+  projectsLinkText: 'Puedes ver mis proyectos destacados ',
+  goalContinuation: 'o contactarme directamente. ',
     journeyTitle: '📅 Mi Trayectoria ',
     journey: [
-      {
-        id: 1,
-        type: 'education', // Tipo de hito
-        title: 'Ciclo Formativo de Grado Superior: Desarrollo de Aplicaciones Web (DAW)',
-        period: '2023 - 2025 ',
-        institution: 'Centro de Formación Profesional Medac, Fuenlabrada',
-        description: 'Formación integral en desarrollo front-end y back-end, bases de datos, y despliegue de aplicaciones.',
-      },
-      {
-        id: 4, // Nuevo ID, asegúrate de que sea único y secuencial si importa el orden
-        type: 'work', // Tipo de hito: experiencia laboral
-        title: 'Desarrollador Web en Prácticas – Grupo Oro',
-        period: 'Marzo - Junio 2025',
-        institution: 'Grupo Oro',
-        description: 'Durante mi estancia en Grupo Oro, participé activamente en el diseño, desarrollo y mantenimiento de sitios web profesionales utilizando WordPress, Elementor y tecnologías relacionadas. Contribuí a la creación y personalización de proyectos para marcas como Mentamoda, MarbellaPlan, GuindaSpa y Masaka Africana, aplicando principios de experiencia de usuario (UX), SEO y metodologías ágiles como Scrum.\nAdemás, desarrollé proyectos propios de comercio electrónico mediante dropshipping, como la tienda InfluProductos, abordando tanto el diseño visual como la estructura técnica mediante sistemas de gestión de contenidos (CMS), integración de PHP, JSON y estrategias de optimización.'
-      },
-      {
-        id: 2,
-        type: 'project', // Tipo de hito
-        title: 'Proyecto de Fin de Grado (Destacado): ThreeLogics',
-        period: '2025',
-        institution: 'Proyecto Académico',
-        description: 'Sistema de Gestión de Almacenes (SGA) robusto y escalable, desarrollado con React, Vite, Node.js (para API REST), Supabase (PostgreSQL) y TailwindCSS. Incluye autenticación, CRUD de inventario, gestión de pedidos y analíticas.',
-      },
-      {
-        id: 3,
-        type: 'project', // Tipo de hito
-        title: 'Lanzamiento en Google Play: Monkey’s Paradise',
-        period: '2025',
-        institution: 'Proyecto Personal',
-        description: 'Videojuego de plataformas 2D lanzado en Google Play. Incluye múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras una fase de pruebas cerradas y mejoras continuas basadas en feedback.',
-      },
-{
-  id: 4,
-  type: 'project',
-  title: 'DevToll Express',
-  period: '2025',
-  institution: 'Proyecto Personal',
-  description: 'Herramienta de productividad todo-en-uno para desarrolladores, que integra utilidades esenciales: generadores de archivos README.md y .gitignore, convertidor JSON↔CSV, minificador de código HTML/CSS/JS, asistente de comandos Git, gestor de snippets, generador visual de configuración Prettier, conversor de unidades CSS y decodificador JWT. Diseñada con una interfaz limpia, vistas previas en tiempo real y flujos de trabajo rápidos e intuitivos. Desarrollada como proyecto personal para optimizar tareas comunes del día a día.',
-}
-
-    ],
+  {
+    id: 1,
+    type: 'education',
+    title: 'Ciclo Formativo de Grado Superior: Desarrollo de Aplicaciones Web (DAW)',
+    period: '2023 - 2025',
+    institution: 'Centro de Formación Profesional Medac, Fuenlabrada',
+    description:
+      'Titulación oficial finalizada. Formación integral en front-end y back-end, bases de datos relacionales y no relacionales y despliegue de aplicaciones web modernas.',
+  },
+  {
+    id: 2,
+    type: 'education',
+    title: 'Ciclo Formativo de Grado Superior: Desarrollo de Aplicaciones Multiplataforma (DAM)',
+    period: '2025 - 2026',
+    institution: 'Centro de Formación Profesional Medac, Fuenlabrada',
+    description:
+      'Actualmente cursando 2º curso. Especialización en aplicaciones multiplataforma, móviles y de escritorio, e integración de servicios.',
+  },
+  {
+    id: 3,
+    type: 'work',
+    title: 'Desarrollador Web en Prácticas – Grupo Oro',
+    period: 'Marzo - Junio 2025',
+    institution: 'Grupo Oro',
+    description:
+      'Diseño, desarrollo y mantenimiento de sitios web (WordPress/Elementor). Personalización para marcas como Mentamoda, MarbellaPlan, GuindaSpa y Masaka Africana, aplicando UX, SEO y Scrum. Desarrollo de e-commerce (InfluProductos), integración con PHP/JSON y optimización técnica.',
+  },
+  {
+    id: 4,
+    type: 'project',
+    title: 'Proyecto de Fin de Grado (Destacado): ThreeLogics',
+    period: '2025',
+    institution: 'Proyecto Académico',
+    description:
+      'SGA robusto con React, Vite, Node.js (API REST), Supabase (PostgreSQL) y TailwindCSS. Autenticación, CRUD de inventario, gestión de pedidos y analíticas.',
+  },
+  {
+    id: 5,
+    type: 'project',
+    title: 'Lanzamiento en Google Play: Monkey’s Paradise',
+    period: '2025',
+    institution: 'Proyecto Personal',
+    description:
+      'Videojuego 2D de plataformas lanzado en Google Play. Múltiples niveles, jefes, meteoritos y control táctil optimizado. Publicado tras pruebas cerradas y mejoras por feedback.',
+  },
+  {
+    id: 6,
+    type: 'project',
+    title: 'DevTool Express', // (había un typo: "DevToll")
+    period: '2025',
+    institution: 'Proyecto Personal',
+    description:
+      'Suite de productividad para devs: generadores README/.gitignore, conversor JSON↔CSV, minificador HTML/CSS/JS, asistente Git, gestor de snippets, configurador visual de Prettier, conversor de unidades CSS y decodificador JWT. UI con vistas previas en tiempo real.',
+  },
+]
+,
   },
   en: {
     title: 'About Me ',
-    greeting: 'Hello! I am a passionate web developer in training, currently studying ',
-    program: 'Web Application Development (DAW) ',
-    passion: '. Since I discovered the world of programming, I have been fascinated by the ability to turn ideas into real digital experiences. ',
-    experienceIntro: 'During my training, I have gained experience working with technologies such as ',
-    coreTech: 'HTML, CSS, JavaScript, PHP, MySQL ',
-    modernTechIntro: 'and recently I have immersed myself in the modern ecosystem with tools such as ',
-    modernTech: 'React, Node.js, TailwindCSS ',
-    dbIntro: 'and NoSQL-friendly databases like ',
-    dbTech: 'MongoDB and Supabase (advanced PostgreSQL) ',
-    personality: 'I consider myself a creative, curious, and constantly evolving person. I enjoy solving problems, experimenting with new technologies, and collaborating on real projects that allow me to continue learning. ',
-    goal: 'My goal is to merge creativity and technology to create innovative digital solutions that positively impact people and companies. If you want to know more about me, feel free to check out my ',
-    projectsLinkText: 'projects ',
-    goalContinuation: 'or get in touch. ',
+  title: 'About Me',
+  greeting: 'Hi! I am a junior Full Stack Developer, graduated in ',
+  program: 'Web Application Development (DAW) and currently studying the 2nd year of Multiplatform Application Development (DAM). ',
+  passion: 'Since I discovered the world of programming, I have been fascinated by the possibility of turning ideas into real digital experiences. ',
+  experienceIntro: 'Throughout my education and projects, I have gained experience in different areas of development: ',
+  coreTech: 'Frontend: HTML, CSS, JavaScript, TypeScript, React, TailwindCSS, Bootstrap. ',
+  modernTechIntro: 'Backend: Node.js, Express, PHP, Python (in progress). ',
+  modernTech: 'Databases: MySQL, MongoDB, Supabase (advanced PostgreSQL). ',
+  dbIntro: 'Tools & methodologies: Git, GitHub, Docker, Postman, Agile/Scrum, Vercel, Figma. ',
+  dbTech: '',
+  personality: 'I consider myself a creative, problem-solving, and constantly evolving person. I enjoy tackling challenges, exploring new technologies, and collaborating on real projects that allow me to keep learning. ',
+  goal: 'I am looking to apply my knowledge in real projects within a professional team, bringing commitment, creativity, and a strong willingness to keep growing. ',
+  projectsLinkText: 'You can check out my featured projects ',
+  goalContinuation: 'or contact me directly. ',
     journeyTitle: '📅 My Journey ',
     journey: [
-      {
-        id: 1,
-        type: 'education',
-        title: 'Higher Level Technical Certificate: Web Application Development (DAW)',
-        period: '2023 - 2025 ',
-        institution: 'Medac Vocational Training Center, Fuenlabrada ',
-        description: 'Comprehensive training in front-end and back-end development, databases, and application deployment.',
-      },
-      {
-        id: 4, // New ID
-        type: 'work',
-        title: 'Intern Web Developer – Grupo Oro',
-        period: 'MAY - June 2025',
-        institution: 'Grupo Oro',
-        description: 'During my time at Grupo Oro, I actively participated in the design, development, and maintenance of professional websites using WordPress, Elementor, and related technologies. I contributed to the creation and customization of projects for brands such as Mentamoda, MarbellaPlan, GuindaSpa, and Masaka Africana, applying user experience (UX) principles, SEO, and agile methodologies like Scrum.\nAdditionally, I developed my own e-commerce dropshipping projects, such as the InfluProductos store, addressing both visual design and technical structure using content management systems (CMS), PHP and JSON integration, and optimization strategies.'
-      },
-      {
-        id: 2,
-        type: 'project',
-        title: 'Final Degree Project (Featured): ThreeLogics ',
-        period: '2025 ',
-        institution: 'Academic Project ',
-        description: 'A robust and scalable Warehouse Management System (WMS) built with React, Vite, Node.js (for REST API), Supabase (PostgreSQL), and TailwindCSS. Features authentication, inventory CRUD, order management, and analytics.',
-      },
-      {
-        id: 3,
-        type: 'project',
-        title: 'Google Play Launch: Monkey’s Paradise',
-        period: '2025',
-        institution: 'Personal Project',
-        description: '2D platformer game released on Google Play. Includes multiple levels, bosses, meteorites and optimized touch controls. Published after a closed beta phase and iterative improvements based on user feedback.',
-      },
-      {
-  id: 4,
-  type: 'project',
-  title: 'DevToll Express',
-  period: '2025',
-  institution: 'Personal Project',
-  description: 'All-in-one productivity tool for developers featuring a collection of essential utilities: README.md and .gitignore file generators, JSON↔CSV converter, code minifier for HTML/CSS/JS, Git command helper, snippet manager, Prettier config builder, CSS unit converter, and JWT decoder. Designed with a clean UI, real-time previews, and optimized for fast, intuitive workflows. Built as a personal project to streamline daily development tasks.',
-}
-
-    ],
+  {
+    id: 1,
+    type: 'education',
+    title: 'Higher National Diploma: Web Application Development (DAW)',
+    period: '2023 - 2025',
+    institution: 'Medac Vocational Training Center, Fuenlabrada',
+    description:
+      'Official degree completed. Comprehensive training in front-end and back-end development, relational and non-relational databases, and deployment of modern web applications.',
+  },
+  {
+    id: 2,
+    type: 'education',
+    title: 'Higher National Diploma: Multiplatform Application Development (DAM)',
+    period: '2025 - 2026',
+    institution: 'Medac Vocational Training Center, Fuenlabrada',
+    description:
+      'Currently studying the 2nd year. Specialization in multiplatform, mobile, and desktop applications, as well as integration of advanced services and environments.',
+  },
+  {
+    id: 3,
+    type: 'work',
+    title: 'Web Developer Intern – Grupo Oro',
+    period: 'March - June 2025',
+    institution: 'Grupo Oro',
+    description:
+      'Design, development, and maintenance of professional websites using WordPress and Elementor. Contributed to projects for brands such as Mentamoda, MarbellaPlan, GuindaSpa, and Masaka Africana, applying UX principles, SEO, and Agile/Scrum methodologies. Developed personal e-commerce projects like InfluProductos (dropshipping), including visual design, CMS structure, PHP/JSON integration, and optimization strategies.',
+  },
+  {
+    id: 4,
+    type: 'project',
+    title: 'Final Degree Project (Highlighted): ThreeLogics',
+    period: '2025',
+    institution: 'Academic Project',
+    description:
+      'Robust Warehouse Management System (WMS) built with React, Vite, Node.js (REST API), Supabase (PostgreSQL), and TailwindCSS. Includes authentication, inventory CRUD, order management, and analytics.',
+  },
+  {
+    id: 5,
+    type: 'project',
+    title: 'Google Play Launch: Monkey’s Paradise',
+    period: '2025',
+    institution: 'Personal Project',
+    description:
+      '2D arcade platformer video game launched on Google Play. Features multiple levels, bosses, meteor mechanics, and optimized touch controls. Released after closed beta testing and iterative improvements based on user feedback.',
+  },
+  {
+    id: 6,
+    type: 'project',
+    title: 'DevTool Express',
+    period: '2025',
+    institution: 'Personal Project',
+    description:
+      'All-in-one productivity tool for developers, integrating essential utilities: README.md and .gitignore generators, JSON↔CSV converter, HTML/CSS/JS minifier, Git command assistant, snippet manager, visual Prettier configurator, CSS unit converter, and JWT decoder. Designed with a clean UI, real-time previews, and optimized workflows for daily tasks.',
+  },
+]
+,
   },
 };
 
