@@ -8,10 +8,10 @@ import Skills from './components/Skills';
 import PersonalInfo from './components/PersonalInfo';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import CarruselPortfolio from './components/CarruselPortfolio';
-
-
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import CertificationsSection from './components/CertificationsSection';
+import { certifications } from './data/certifications';
 
 function App() {
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [language, setLanguage] = useState('es'); // <<< Nuevo estado para el idioma
+  const [language, setLanguage] = useState('es');
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -39,20 +39,27 @@ function App() {
         setLanguage={setLanguage} 
       />
 
-      <main className={`font-sans scroll-smooth transition-colors duration-500 ${
-        isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
-      }`}>
+      <main
+        className={`font-sans scroll-smooth transition-colors duration-500 ${
+          isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'
+        }`}
+      >
         <Hero isDarkMode={isDarkMode} language={language} />
         <AboutMe isDarkMode={isDarkMode} language={language} />
         <PersonalInfo isDarkMode={isDarkMode} language={language} />
         <CarruselPortfolio isDarkMode={isDarkMode} language={language} />
         <Projects isDarkMode={isDarkMode} language={language} />
+
+   
+        <CertificationsSection
+          certifications={certifications}
+          isDarkMode={isDarkMode}
+          language={language}
+        />
+
         <Skills isDarkMode={isDarkMode} language={language} />
-        
         <Footer isDarkMode={isDarkMode} language={language} />
         <ScrollToTop isDarkMode={isDarkMode} />
-        
-      
       </main>
     </div>
   );

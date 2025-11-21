@@ -14,6 +14,7 @@ const navLinksDefinition = [
   { id: 'about', href: '#about', textKey: 'navAbout' },
   { id: 'personalinfo', href: '#personalinfo', textKey: 'navPersonalInfo' },
   { id: 'projects', href: '#projects', textKey: 'navProjects' },
+   { id: 'certifications', href: '#certifications', textKey: 'navCertifications' },
   { id: 'skills', href: '#skills', textKey: 'navSkills' },
 ];
 
@@ -22,6 +23,7 @@ const navbarTexts = {
     navAbout: 'Sobre Mí',
     navPersonalInfo: 'Información',
     navProjects: 'Proyectos',
+    navCertifications: 'Certificaciones', 
     navSkills: 'Skills',
     toggleToLight: 'Cambiar a tema claro',
     toggleToDark: 'Cambiar a tema oscuro',
@@ -34,6 +36,7 @@ const navbarTexts = {
     navAbout: 'About Me',
     navPersonalInfo: 'Personal Info',
     navProjects: 'Projects',
+    navCertifications: 'Certifications', 
     navSkills: 'Skills',
     toggleToLight: 'Switch to light theme',
     toggleToDark: 'Switch to dark theme',
