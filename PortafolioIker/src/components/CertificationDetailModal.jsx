@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink as LinkIcon, Award } from "lucide-react";
+import { useApp } from '../context/AppContext';
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -48,9 +49,9 @@ const renderList = (items) => {
 function CertificationDetailModal({
   certification,
   onClose,
-  isDarkMode,
-  language,
 }) {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === 'dark';
   // ESC
   useEffect(() => {
     const handleEscKey = (event) => event.key === "Escape" && onClose();

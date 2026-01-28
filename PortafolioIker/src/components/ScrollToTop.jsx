@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useApp } from '../context/AppContext';
 
-function ScrollToTop({ isDarkMode }) {
+function ScrollToTop() {
+  const { theme } = useApp();
+  const isDarkMode = theme === 'dark';
   const [isVisible, setIsVisible] = useState(false);
 
   // Muestra el botón cuando el usuario ha hecho scroll hacia abajo más de 200px
@@ -37,9 +40,15 @@ function ScrollToTop({ isDarkMode }) {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.button
+<motion.button
           onClick={handleClick}
-          aria-label="Scroll to top" // Etiqueta ARIA para accesibilidad
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleClick();
+            }
+          }}
+          aria-label="Volver al inicio de la página"
           className={`fixed bottom-8 right-8 p-3 rounded-full shadow-xl 
                       focus:outline-none focus:ring-4 focus:ring-offset-2 
                       dark:focus:ring-offset-slate-900 light:focus:ring-offset-slate-100
@@ -49,10 +58,11 @@ function ScrollToTop({ isDarkMode }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
-          whileHover={{ scale: 1.15 }} // Efecto de hover un poco más pronunciado
-          whileTap={{ scale: 0.95 }}   // Efecto al pulsar
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
+          type="button"
         >
-          <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ArrowUp className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
         </motion.button>
       )}
     </AnimatePresence>

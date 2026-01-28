@@ -6,12 +6,18 @@ import { Award, ExternalLink as LinkIcon } from "lucide-react";
 import CertificationDetailModal from "./CertificationDetailModal";
 import AnimatedText from "./AnimatedText";
 import Reveal from "./Reveal";
+import { useApp } from '../context/AppContext';
+import { useLoadingState } from '../hooks/useLoadingState';
+import { CardSkeleton } from './Skeleton';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function CertificationsSection({ certifications, isDarkMode, language }) {
+function CertificationsSection({ certifications }) {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === 'dark';
   const [selectedCert, setSelectedCert] = useState(null);
   const sectionRef = useRef(null);
+  const { isLoading } = useLoadingState({ minLoadingTime: 600 });
 
   const texts = useMemo(
     () => ({
@@ -232,7 +238,10 @@ function CertificationsSection({ certifications, isDarkMode, language }) {
             </div>
 
             <div className="grid gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {certifications.map((cert) => {
+              {isLoading ? (
+                <CardSkeleton count={3} />
+              ) : (
+                certifications.map((cert) => {
                 const shortDescription = getLangText(cert, "shortDescription");
                 const skills = getLangArray(cert, "skills");
 
@@ -339,18 +348,17 @@ function CertificationsSection({ certifications, isDarkMode, language }) {
                       </div>
                     </button>
                   </article>
-                );
-              })}
+);
+              })
+              )}
             </div>
           </Reveal>
         </div>
       </section>
 
-      <CertificationDetailModal
+<CertificationDetailModal
         certification={selectedCert}
         onClose={() => setSelectedCert(null)}
-        isDarkMode={isDarkMode}
-        language={language}
       />
     </>
   );

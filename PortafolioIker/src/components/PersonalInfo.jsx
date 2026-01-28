@@ -3,9 +3,10 @@ import { Mail, MapPin, User, Linkedin, Github, FileText } from "lucide-react";
 import Reveal from "./Reveal";
 import AnimatedText from "./AnimatedText";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useApp } from "../context/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,7 +118,9 @@ function InfoItem({ icon: IconComponent, label, value, isDarkMode }) {
   );
 }
 
-function PersonalInfo({ isDarkMode, language }) {
+function PersonalInfo() {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === "dark";
   const currentContent = content[language];
 
   const sectionBgClass = isDarkMode ? "bg-slate-900" : "bg-slate-100";
@@ -134,7 +137,7 @@ function PersonalInfo({ isDarkMode, language }) {
 
   useLayoutEffect(() => {
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (prefersReduced) return;
@@ -168,7 +171,7 @@ function PersonalInfo({ isDarkMode, language }) {
           ease: "power3.out",
           clearProps: "filter",
           scrollTrigger: { trigger: section, start: "top 80%" },
-        }
+        },
       );
 
       const shine = card.querySelector(".info-shine");
@@ -185,7 +188,7 @@ function PersonalInfo({ isDarkMode, language }) {
           .fromTo(
             shine,
             { xPercent: -120 },
-            { xPercent: 120, duration: 0.9, ease: "power2.inOut" }
+            { xPercent: 120, duration: 0.9, ease: "power2.inOut" },
           )
           .to(shine, { autoAlpha: 0, duration: 0.2 });
       }
@@ -205,7 +208,7 @@ function PersonalInfo({ isDarkMode, language }) {
               end: "bottom top",
               scrub: true,
             },
-          }
+          },
         );
       }
 
@@ -220,7 +223,7 @@ function PersonalInfo({ isDarkMode, language }) {
             ease: "power2.out",
             delay: i * 0.03,
             scrollTrigger: { trigger: row, start: "top 88%" },
-          }
+          },
         );
       });
 

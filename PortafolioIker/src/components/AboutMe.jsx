@@ -6,6 +6,7 @@ import Reveal from "./Reveal";
 import AnimatedText from "./AnimatedText";
 import { GraduationCap, Lightbulb, Briefcase } from "lucide-react";
 import useIsMobile from "../hooks/useIsMobile";
+import { useApp } from '../context/AppContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -269,7 +270,9 @@ const JourneyItem = ({ item, isDarkMode }) => {
   );
 };
 
-function AboutMe({ isDarkMode, language }) {
+function AboutMe() {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === 'dark';
   const isMobile = useIsMobile();
   const currentContent = aboutMeContent[language];
 

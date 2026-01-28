@@ -1,6 +1,9 @@
 import React from "react";
+import { useApp } from '../context/AppContext';
 
-export default function CarruselEstiloContinuo({ isDarkMode }) {
+export default function CarruselPortfolio() {
+  const { theme } = useApp();
+  const isDarkMode = theme === 'dark';
   const textUnitTop = "JAVASCRIPT REACT NODE.JS PYTHON ";
   const textUnitBottom = "VSCODE PRISMA GIT SQL FIGMA ";
 

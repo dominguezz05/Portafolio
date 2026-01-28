@@ -5,9 +5,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Reveal from "./Reveal";
 import AnimatedText from "./AnimatedText";
 import { Github, ExternalLink, PlayCircle } from "lucide-react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useApp } from "../context/AppContext";
+import { useLoadingState } from "../hooks/useLoadingState";
+import { ProjectCardSkeleton } from "./Skeleton";
+import { LoadingOverlay } from "./LoadingOverlay";
+import { useProjectSearch } from "../hooks/useSearch";
+import { SearchBar, SearchResults } from "./Search";
+import { ProjectCard } from "./ProjectCard";
+
+// Borramos el segundo bloque repetido que tenías aquí
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -229,9 +237,25 @@ const projects = [
   },
 ];
 
-function Projects({ isDarkMode, language }) {
+function Projects() {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === "dark";
   const [selectedProject, setSelectedProject] = useState(null);
   const sectionRef = useRef(null);
+  const { isLoading } = useLoadingState({ minLoadingTime: 800 });
+  const [showFilters, setShowFilters] = useState(false);
+
+  // Hook de búsqueda para proyectos
+  const {
+    searchTerm,
+    setSearchTerm,
+    searchResults,
+    selectedFilters,
+    toggleFilter,
+    clearSearch,
+    availableFilters,
+    hasActiveSearch,
+  } = useProjectSearch(projects);
 
   const openModalWithProject = (project) => {
     setSelectedProject(project);
@@ -243,7 +267,7 @@ function Projects({ isDarkMode, language }) {
 
   useLayoutEffect(() => {
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     const isMobile = window.innerWidth < 768;
     if (prefersReduced) return;
@@ -303,19 +327,19 @@ function Projects({ isDarkMode, language }) {
             duration: 0.9,
             ease: "power3.out",
             clearProps: "filter",
-          }
+          },
         )
           // Media “punch” (zoom out suave)
           .fromTo(
             media,
             { scale: 1.08 },
             { scale: 1, duration: 0.8, ease: "power3.out" },
-            0.05
+            0.05,
           )
           // Contenido entra con stagger
           .fromTo(
             content.querySelectorAll(
-              ".project-title, .project-desc, .project-tags"
+              ".project-title, .project-desc, .project-tags",
             ),
             { autoAlpha: 0, y: 16 },
             {
@@ -325,7 +349,7 @@ function Projects({ isDarkMode, language }) {
               ease: "power2.out",
               stagger: 0.08,
             },
-            0.2
+            0.2,
           )
           // Chips (tags) “pop”
           .fromTo(
@@ -339,14 +363,14 @@ function Projects({ isDarkMode, language }) {
               ease: "back.out(1.7)",
               stagger: 0.03,
             },
-            0.35
+            0.35,
           )
 
           .fromTo(
             actions,
             { autoAlpha: 0, y: 14 },
             { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" },
-            0.45
+            0.45,
           )
 
           .to(shine, { autoAlpha: 1, duration: 0.01 }, 0.35)
@@ -354,7 +378,7 @@ function Projects({ isDarkMode, language }) {
             shine,
             { xPercent: -120 },
             { xPercent: 120, duration: 0.75, ease: "power2.inOut" },
-            0.35
+            0.35,
           )
           .to(shine, { autoAlpha: 0, duration: 0.2 }, 1.05);
 
@@ -373,7 +397,7 @@ function Projects({ isDarkMode, language }) {
                 end: "bottom top",
                 scrub: true,
               },
-            }
+            },
           );
         }
       });
@@ -417,193 +441,154 @@ function Projects({ isDarkMode, language }) {
               className={`text-4xl md:text-4xl font-bold text-center mb-16 ${titleColor}`}
             >
               <AnimatedText keyProp={`title-${language}`}>
-                💼{" "}
                 {language === "es"
-                  ? "Proyectos Destacados"
-                  : "Featured Projects"}
+                  ? "💼 Proyectos Destacados"
+                  : "💼 Featured Projects"}
               </AnimatedText>
             </h2>
 
+            {/* Barra de búsqueda y filtros */}
+            <div className="mb-8">
+              <SearchBar
+                searchTerm={searchTerm}
+                onSearchChange={setSearchTerm}
+                placeholder={
+                  language === "es"
+                    ? "Buscar proyectos..."
+                    : "Search projects..."
+                }
+                filters={availableFilters}
+                selectedFilters={selectedFilters}
+                onFilterToggle={toggleFilter}
+                showFilters={showFilters}
+                onToggleFilters={() => setShowFilters(!showFilters)}
+              />
+            </div>
+
             <div className="space-y-16 md:space-y-20">
-              {projects.map((project) => (
-                <div
-                  key={project.title}
-                  className={`project-card relative flex flex-col md:flex-row overflow-hidden rounded-lg shadow-xl hover:scale-[1.02] transition-transform duration-300
-      ${
-        isDarkMode
-          ? "bg-gradient-to-br from-gray-800 to-gray-900 text-slate-100"
-          : "bg-gradient-to-br from-white to-gray-100 text-slate-800"
-      }`}
-                >
-                  {/* Shine sweep overlay */}
-                  <div className="project-shine pointer-events-none absolute inset-0 opacity-0" />
-
-                  {project.images && project.images.length > 0 && (
-                    <div className="project-media relative w-full md:w-2/5 h-72 md:h-auto group overflow-hidden">
-                      <Swiper
-                        spaceBetween={0}
-                        centeredSlides={true}
-                        autoplay={{
-                          delay: 3500,
-                          disableOnInteraction: false,
-                        }}
-                        pagination={{ clickable: true }}
-                        navigation={project.images.length > 1}
-                        loop={project.images.length > 1}
-                        modules={[Autoplay, Pagination, Navigation]}
-                        className="mySwiper w-full h-full"
-                      >
-                        {project.images.map((imgSrc, idx) => (
-                          <SwiperSlide key={`${project.title}-img-${idx}`}>
-                            <img
-                              src={imgSrc}
-                              alt={`${project.title} - screenshot ${idx + 1}`}
-                              className="object-cover object-center w-full h-full"
-                            />
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
-                    </div>
-                  )}
-
-                  <div className="project-content flex-1 p-6 md:p-8 flex flex-col justify-between">
-                    <div>
-                      <h3
-                        className={`project-title text-2xl lg:text-3xl font-bold mb-3 ${
-                          isDarkMode ? "text-blue-400" : "text-blue-600"
-                        }`}
-                      >
-                        {project.title}
-                      </h3>
-
-                      <p className="project-desc mb-5 text-sm leading-relaxed line-clamp-3 md:line-clamp-4">
-                        <AnimatedText
-                          keyProp={`${project.title}-desc-${language}`}
-                        >
-                          {language === "es"
-                            ? project.description_es
-                            : project.description_en}
-                        </AnimatedText>
-                      </p>
-
-                      <div className="project-tags flex flex-wrap gap-2 mb-6">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className={`project-tag text-xs px-3 py-1.5 rounded-full font-medium ${
-                              isDarkMode
-                                ? "bg-sky-700 text-sky-100"
-                                : "bg-sky-100 text-sky-700"
-                            }`}
+              {isLoading ? (
+                <ProjectCardSkeleton count={3} />
+              ) : (
+                <SearchResults
+                  results={searchResults}
+                  searchTerm={searchTerm}
+                  selectedFilters={selectedFilters}
+                  emptyMessage={
+                    language === "es"
+                      ? "Intenta con otros términos de búsqueda"
+                      : "Try different search terms"
+                  }
+                  renderItem={(project, index) => (
+                    <div
+                      key={project.title}
+                      className={`project-card relative flex flex-col md:flex-row overflow-hidden rounded-lg shadow-xl hover:scale-[1.02] transition-transform duration-300 ${
+                        isDarkMode
+                          ? "bg-gradient-to-br from-gray-800 to-gray-900 text-slate-100"
+                          : "bg-gradient-to-br from-white to-gray-100 text-slate-800"
+                      }`}
+                    >
+                      {/* Media / Swiper */}
+                      {project.images && project.images.length > 0 && (
+                        <div className="project-media relative w-full md:w-2/5 h-72 md:h-auto group overflow-hidden">
+                          <Swiper
+                            spaceBetween={0}
+                            centeredSlides={true}
+                            autoplay={{
+                              delay: 3500,
+                              disableOnInteraction: false,
+                            }}
+                            pagination={{ clickable: true }}
+                            navigation={project.images.length > 1}
+                            loop={project.images.length > 1}
+                            modules={[Autoplay, Pagination, Navigation]}
+                            className="mySwiper w-full h-full"
                           >
-                            {tech}
-                          </span>
-                        ))}
+                            {project.images.map((imgSrc, idx) => (
+                              <SwiperSlide key={`${project.title}-img-${idx}`}>
+                                <img
+                                  src={imgSrc}
+                                  alt={`${project.title} - ${idx}`}
+                                  className="object-cover w-full h-full"
+                                />
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        </div>
+                      )}
+
+                      {/* Content */}
+                      <div className="project-content flex-1 p-6 md:p-8 flex flex-col justify-between">
+                        <div>
+                          <h3
+                            className={`text-2xl lg:text-3xl font-bold mb-3 ${isDarkMode ? "text-blue-400" : "text-blue-600"}`}
+                          >
+                            {project.title}
+                          </h3>
+                          <p className="mb-5 text-sm leading-relaxed line-clamp-3">
+                            <AnimatedText
+                              keyProp={`${project.title}-desc-${language}`}
+                            >
+                              {language === "es"
+                                ? project.description_es
+                                : project.description_en}
+                            </AnimatedText>
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {project.technologies.map((tech) => (
+                              <span
+                                key={tech}
+                                className={`text-xs px-3 py-1.5 rounded-full font-medium ${isDarkMode ? "bg-sky-700 text-sky-100" : "bg-sky-100 text-sky-700"}`}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="project-actions flex flex-wrap gap-3 mt-auto items-center">
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm bg-slate-700 text-white hover:bg-slate-800"
+                          >
+                            <Github className="w-4 h-4" /> Code
+                          </a>
+                          {project.preview && (
+                            <a
+                              href={project.preview}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm bg-blue-500 text-white hover:bg-blue-600"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              {language === "es" ? "Ver web" : "View web"}
+                            </a>
+                          )}
+                          {(project.detailedDescription_es ||
+                            project.detailedDescription_en) && (
+                            <button
+                              onClick={() => openModalWithProject(project)}
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm bg-purple-500 text-white hover:bg-purple-600"
+                            >
+                              {language === "es"
+                                ? "Leer Más..."
+                                : "Read More..."}
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
-
-                    <div className="project-actions flex flex-wrap gap-3 mt-auto items-center">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`GitHub repository for ${project.title}`}
-                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-            ${
-              isDarkMode
-                ? "bg-gray-700 hover:bg-gray-600 text-white"
-                : "bg-slate-700 hover:bg-slate-800 text-white"
-            }`}
-                      >
-                        <Github className="w-4 h-4" /> Code
-                      </a>
-
-                      {project.preview && (
-                        <a
-                          href={project.preview}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Live demo of ${project.title}`}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-              ${
-                isDarkMode
-                  ? "bg-blue-600 hover:bg-blue-500 text-white"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
-              }`}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <AnimatedText
-                            keyProp={`${project.title}-preview-${language}`}
-                          >
-                            {project.title === "Monkey's Paradise"
-                              ? language === "es"
-                                ? "Jugar en Itch.io"
-                                : "Play on Itch.io"
-                              : language === "es"
-                              ? "Ver web"
-                              : "View web"}
-                          </AnimatedText>
-                        </a>
-                      )}
-
-                      {project.googlePlayLink && (
-                        <a
-                          href={project.googlePlayLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Google Play link for ${project.title}`}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-              ${
-                isDarkMode
-                  ? "bg-green-600 hover:bg-green-500 text-white"
-                  : "bg-green-500 hover:bg-green-600 text-white"
-              }`}
-                        >
-                          <PlayCircle className="w-4 h-4" />
-                          <AnimatedText
-                            keyProp={`${project.title}-gplay-${language}`}
-                          >
-                            {language === "es"
-                              ? "Jugar en Google Play"
-                              : "Play on Google Play"}
-                          </AnimatedText>
-                        </a>
-                      )}
-
-                      {(project.detailedDescription_es ||
-                        project.detailedDescription_en) && (
-                        <button
-                          onClick={() => openModalWithProject(project)}
-                          aria-label={`${
-                            language === "es"
-                              ? "Leer más sobre el proyecto"
-                              : "Read more about the project"
-                          } ${project.title}`}
-                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold text-sm transition-all duration-200 ease-in-out
-              ${
-                isDarkMode
-                  ? "bg-purple-600 hover:bg-purple-500 text-white"
-                  : "bg-purple-500 hover:bg-purple-600 text-white"
-              }`}
-                        >
-                          {language === "es" ? "Leer Más..." : "Read More..."}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  )}
+                />
+              )}
             </div>
           </div>
         </Reveal>
       </section>
 
-      <ProjectDetailModal
-        project={selectedProject}
-        onClose={closeModal}
-        isDarkMode={isDarkMode}
-        language={language}
-      />
+      <ProjectDetailModal project={selectedProject} onClose={closeModal} />
     </>
   );
 }

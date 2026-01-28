@@ -1,7 +1,10 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import AnimatedText from "./AnimatedText";
+import { useApp } from '../context/AppContext';
 
-function Footer({ isDarkMode, language }) {
+function Footer() {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === 'dark';
   // Define las clases para el fondo del footer y el color del texto principal
   // Se usan colores sólidos para el fondo, consistentes con otras secciones.
   const footerClasses = isDarkMode

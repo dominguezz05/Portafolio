@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
  * @param {number} breakpoint - El ancho en píxeles para considerar el cambio (por defecto 768px, el 'md' de Tailwind).
  * @returns {boolean} - Devuelve 'true' si el ancho de la ventana es menor que el breakpoint.
  */
-const useIsMobile = (breakpoint = 768) => {
+const useIsMobile = (breakpoint: number = 768): boolean => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

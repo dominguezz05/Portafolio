@@ -7,6 +7,7 @@ import {
   Navigation,
   Autoplay as SwiperAutoplay,
 } from "swiper/modules";
+import { useApp } from '../context/AppContext';
 
 const backdropVariants = {
   hidden: { opacity: 0 },
@@ -51,7 +52,9 @@ const renderList = (items) => {
   );
 };
 
-function ProjectDetailModal({ project, onClose, isDarkMode, language }) {
+function ProjectDetailModal({ project, onClose }) {
+  const { theme, language } = useApp();
+  const isDarkMode = theme === 'dark';
   useEffect(() => {
     const handleEscKey = (event) => event.key === "Escape" && onClose();
     document.addEventListener("keydown", handleEscKey);

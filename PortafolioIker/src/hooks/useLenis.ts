@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function useLenis() {
-  const lenisRef = useRef(null);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -23,7 +23,7 @@ export function useLenis() {
     lenisRef.current = lenis;
 
     let rafId = 0;
-    const raf = (time) => {
+    const raf = (time: number) => {
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     };
